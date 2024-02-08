@@ -1,0 +1,4 @@
+{
+  "extends": "./tsconfig.typecheck.json",
+  "include": ["src", "test", "rollup.config.ts", "*.cjs"],
+}

@@ -1,0 +1,17 @@
+{
+  "extends": [
+    "config:js-lib"
+  ],
+  "labels":[
+    "renovate-bot"
+  ],
+  "ignoreDeps": [
+    "node",
+    "@types/node",
+    "npm"
+  ],
+  "automerge": true,
+  "automergeType": "pr",
+  "platformAutomerge": true,
+  "schedule": ["before 4am on the first day of the month"]
+}

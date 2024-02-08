@@ -1,0 +1,147 @@
+name: Checking
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+
+jobs:
+  prepare:
+    name: Prepare
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "lts/*"
+
+      - name: Cache dependencies
+        id: cache-deps
+        uses: actions/cache@v4
+        with:
+          path: ./node_modules
+          key: deps-${{ hashFiles('package-lock.json') }}
+
+      - name: Install dependencies
+        if: steps.cache-deps.outputs.cache-hit != 'true'
+        run: npm clean-install
+
+      - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
+        run: npm audit signatures
+
+      - name: Cache testing dependencies
+        id: cache-test-deps
+        uses: actions/cache@v4
+        with:
+          path: ./test/node_modules
+          key: test-deps-${{ hashFiles('test/package-lock.json') }}
+
+      - name: Install testing dependencies
+        if: steps.cache-test-deps.outputs.cache-hit != 'true'
+        run: npm clean-install
+        working-directory: test
+
+      - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
+        run: npm audit signatures
+        working-directory: test
+
+  lint:
+    name: Linting
+    needs:
+      - prepare
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "lts/*"
+
+      - name: Restore dependencies
+        uses: actions/cache/restore@v4
+        with:
+          path: ./node_modules
+          key: deps-${{ hashFiles('package-lock.json') }}
+
+      - name: Build
+        run: npm run build
+
+      - name: Restore testing dependencies
+        uses: actions/cache/restore@v4
+        with:
+          path: ./test/node_modules
+          key: test-deps-${{ hashFiles('test/package-lock.json') }}
+
+      - name: Run linter
+        run: npm run lint
+
+  typecheck:
+    name: Type checking
+    needs:
+      - prepare
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "lts/*"
+
+      - name: Restore dependencies
+        uses: actions/cache/restore@v4
+        with:
+          path: ./node_modules
+          key: deps-${{ hashFiles('package-lock.json') }}
+
+      - name: Build
+        run: npm run build
+
+      - name: Restore testing dependencies
+        uses: actions/cache/restore@v4
+        with:
+          path: ./test/node_modules
+          key: test-deps-${{ hashFiles('test/package-lock.json') }}
+
+      - name: Run typecheck
+        run: npm run typecheck
+
+  tests:
+    name: Tests
+    needs:
+      - prepare
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "lts/*"
+
+      - name: Restore dependencies
+        uses: actions/cache/restore@v4
+        with:
+          path: ./node_modules
+          key: deps-${{ hashFiles('package-lock.json') }}
+
+      - name: Build
+        run: npm run build
+
+      - name: Restore testing dependencies
+        uses: actions/cache/restore@v4
+        with:
+          path: ./test/node_modules
+          key: test-deps-${{ hashFiles('test/package-lock.json') }}
+
+      - name: Run tests
+        run: npm run test
