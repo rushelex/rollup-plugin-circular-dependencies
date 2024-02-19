@@ -44,14 +44,15 @@ class FilePrinter extends Printer {
 }
 
 class ConsolePrinter extends Printer {
-  public shouldPrint(): boolean {
-    return !this.ctx.options.outputFilePath;
+  public shouldPrint(data: FormattedData): boolean {
+    const isConsolePrinter = !this.ctx.options.outputFilePath;
+    const isDataExists = data || data === 0 || (typeof data === 'string' && data.length > 0);
+
+    return isConsolePrinter && isDataExists;
   }
 
   public print(data: FormattedData): void {
-    if (data || data === '' || data === 0) {
-      console.info('\n\n' + data?.toString() + '\n');
-    }
+    console.info('\n\n' + data?.toString() + '\n');
   }
 }
 

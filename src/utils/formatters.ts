@@ -1,5 +1,5 @@
 import chalk from 'chalk';
-import { isObject, isString } from 'lodash-es';
+import { isNil, isObject, isString } from 'lodash-es';
 
 import { type CircularDependenciesData } from '../types';
 
@@ -24,6 +24,10 @@ function PrettyFormatter(config?: PrettyFormatterConfig): Formatter {
   const { colors = true } = config || {};
 
   return (data): string => {
+    if (!isNil(data) && isObject(data) && Object.keys(data).length === 0) {
+      return '';
+    }
+
     if (!isValidData(data)) {
       throw new Error('Pretty formatter can only be used with original output');
     }

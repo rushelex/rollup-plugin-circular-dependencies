@@ -6,7 +6,6 @@
   "type": "module",
   "scripts": {
     "prepare": "simple-git-hooks",
-    "start": "nodemon",
     "build": "rollup --config rollup.config.ts --configPlugin rollup-plugin-esbuild",
     "build:watch": "npm run build -- --watch",
     "lint": "NODE_ENV=production eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
