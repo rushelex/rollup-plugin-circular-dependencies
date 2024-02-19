@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/rushelex/rollup-plugin-circular-dependencies/compare/v1.1.0...v1.1.1) (2024-02-19)
+
+
+### Bug Fixes
+
+* changes plugin name ([fb253e4](https://github.com/rushelex/rollup-plugin-circular-dependencies/commit/fb253e4e9041fcf3d228d8900553e0466bffde1a))
+
 # [1.1.0](https://github.com/rushelex/rollup-plugin-circular-dependencies/compare/v1.0.0...v1.1.0) (2024-02-13)
 
 
