@@ -9,7 +9,7 @@ export function circularDependencies(options: Options = {}): Plugin {
   const context = new Context(options);
 
   return {
-    name: 'test-circular-dependencies',
+    name: 'circular-dependencies',
 
     options(inputOptions) {
       const savedOnLog = inputOptions.onLog;
