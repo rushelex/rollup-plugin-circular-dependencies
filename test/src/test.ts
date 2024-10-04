@@ -1,6 +1,5 @@
 import { existsSync, readFileSync, rmSync } from 'node:fs';
 import { resolve } from 'node:path';
-
 import { getRollupProcess, OUTPUT_FILE_RELATIVE_PATH } from './utils';
 
 const CIRCULAR_DEPS_ERROR = 'Circular dependencies has been detected';

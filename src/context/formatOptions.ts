@@ -2,7 +2,7 @@ import { join, relative } from 'node:path';
 import type { FilterPattern } from '@rollup/pluginutils';
 
 import type { CircularDependenciesData, Options } from '../types';
-import { DefaultFormatters } from '../utils';
+import { DefaultFormatters } from '../utils/formatters';
 
 const DEFAULT_EXCLUDE: RegExp[] = [/[\\/]node_modules[\\/]/, /[\\/]\.git[\\/]/];
 
