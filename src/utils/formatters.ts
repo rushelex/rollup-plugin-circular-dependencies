@@ -1,7 +1,8 @@
 import chalk from 'chalk';
-import { isNil, isObject, isString } from 'lodash-es';
 
 import { type CircularDependenciesData } from '../types';
+
+import { isNil, isObject, isString } from './primitive';
 
 type Formatter = (data: CircularDependenciesData) => string;
 

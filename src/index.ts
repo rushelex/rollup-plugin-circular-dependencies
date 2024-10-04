@@ -3,7 +3,8 @@ import { type PluginContext } from 'rollup';
 import { Context } from './context';
 import { ModuleNode } from './module';
 import { type Options, type Plugin } from './types';
-import { generateCycleNodesMap, generateModuleTree, printCycleNodes } from './utils';
+import { generateCycleNodesMap, generateModuleTree } from './utils/moduleTree';
+import { printCycleNodes } from './utils/print';
 
 export function circularDependencies(options: Options = {}): Plugin {
   const context = new Context(options);
@@ -59,7 +60,7 @@ export function circularDependencies(options: Options = {}): Plugin {
   };
 }
 
-export { DefaultFormatters } from './utils';
+export { DefaultFormatters } from './utils/formatters';
 
 // eslint-disable-next-line import/no-default-export
 export default circularDependencies;
