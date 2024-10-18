@@ -42,8 +42,18 @@ describe('main test', () => {
     expect(stderr.toString().includes(CIRCULAR_DEPS_ERROR)).toBeTruthy();
   });
 
-  it('should print pretty output in file', () => {
-    const { stderr } = getRollupRunningProcess('output.file.pretty');
+  it('should print pretty colored output in file', () => {
+    const { stderr } = getRollupRunningProcess('output.file.pretty.colored');
+
+    const outputContent = readFileSync(testOutputFilePath, { encoding: 'utf-8' });
+
+    expect(outputContent).toMatchSnapshot();
+
+    expect(stderr.toString().includes(CIRCULAR_DEPS_ERROR)).toBeTruthy();
+  });
+
+  it('should print pretty uncolored output in file', () => {
+    const { stderr } = getRollupRunningProcess('output.file.pretty.uncolored');
 
     const outputContent = readFileSync(testOutputFilePath, { encoding: 'utf-8' });
 

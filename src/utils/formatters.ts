@@ -43,7 +43,7 @@ function PrettyFormatter(config?: PrettyFormatterConfig): Formatter {
       group += color.yellow(entryModuleId);
 
       for (const currentCir of moduleNodes) {
-        group += `\n` + `    ${currentCir.join(color.blue(' -> '))}`;
+        group += `\n` + `    ${currentCir.join(` ${color.blue('->')} `)}`;
       }
 
       groups.push(group);
