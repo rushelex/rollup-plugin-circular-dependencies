@@ -69,6 +69,7 @@
     }
   },
   "dependencies": {
+    "@rollup/pluginutils": "5.1.2",
     "picocolors": "1.1.1",
     "picomatch": "4.0.2"
   },

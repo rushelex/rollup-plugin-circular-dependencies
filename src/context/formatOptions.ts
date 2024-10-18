@@ -1,8 +1,9 @@
+import type { FilterPattern } from '@rollup/pluginutils';
+
 import { join, relative } from 'node:path';
 import { cwd } from 'node:process';
 
 import type { CircularDependenciesData, Options } from '../types';
-import type { FilterPattern } from '../utils/createFilter';
 
 import { DefaultFormatters } from '../utils/formatters';
 

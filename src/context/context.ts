@@ -1,7 +1,8 @@
+import { createFilter } from '@rollup/pluginutils';
+
 import type { ModuleNode } from '../module';
 import type { Options } from '../types';
 
-import { createFilter } from '../utils/createFilter';
 import { formatOptions } from './formatOptions';
 
 export class Context {

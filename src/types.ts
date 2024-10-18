@@ -1,7 +1,7 @@
+import type { FilterPattern } from '@rollup/pluginutils';
 import type { LogHandlerWithDefault, PluginContext } from 'rollup';
 
 import type { ModuleInfo, ModuleNode } from './module';
-import type { FilterPattern } from './utils/createFilter';
 
 export type CircularDependenciesData = Record<string, Array<Array<ModuleNode['id']>>>;
 
