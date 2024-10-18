@@ -1,5 +1,3 @@
-/* eslint-disable no-template-curly-in-string */
-
 /**
  * @type {import('semantic-release').GlobalConfig}
  */
@@ -18,9 +16,9 @@ module.exports = {
   branches: [
     'main',
     'next',
+    { name: 'rc', prerelease: 'rc' },
     { name: 'beta', prerelease: true },
     { name: 'alpha', prerelease: true },
-    { name: 'rc', prerelease: 'rc' },
   ],
   plugins: [
     '@semantic-release/commit-analyzer',

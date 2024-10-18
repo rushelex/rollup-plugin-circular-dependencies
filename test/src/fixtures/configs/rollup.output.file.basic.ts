@@ -1,5 +1,5 @@
 import typescript from '@rollup/plugin-typescript';
-import { type RollupOptions } from 'rollup';
+import type { RollupOptions } from 'rollup';
 import circularDependencies from 'rollup-plugin-circular-dependencies';
 
 import { OUTPUT_FILE_RELATIVE_PATH } from '../../utils.js';
@@ -19,5 +19,4 @@ const config: RollupOptions = {
   ],
 };
 
-// eslint-disable-next-line import/no-default-export
 export default config;

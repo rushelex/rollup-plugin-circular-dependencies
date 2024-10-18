@@ -1,9 +1,7 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+import type { FilterPattern } from '@rollup/pluginutils';
+import type { LogHandlerWithDefault, PluginContext } from 'rollup';
 
-import { type FilterPattern } from '@rollup/pluginutils';
-import { type LogHandlerWithDefault, type PluginContext } from 'rollup';
-
-import { type ModuleInfo, type ModuleNode } from './module';
+import type { ModuleInfo, ModuleNode } from './module';
 
 export type CircularDependenciesData = Record<string, Array<Array<ModuleNode['id']>>>;
 
@@ -32,7 +30,7 @@ export interface Options {
    */
   exclude?: FilterPattern;
   /**
-   * Throw Vite error instead of warning
+   * Throw Rollup error instead of warning
    *
    * @default true
    */
@@ -95,7 +93,7 @@ interface InputOptions {
  */
 export interface Plugin {
   name: string;
-  options(inputOptions: InputOptions): void;
-  moduleParsed(moduleInfo: ModuleInfo): void;
-  generateBundle(): void;
+  options: (inputOptions: InputOptions) => void;
+  moduleParsed: (moduleInfo: ModuleInfo) => void;
+  generateBundle: () => void;
 }

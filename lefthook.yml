@@ -1,0 +1,26 @@
+pre-commit:
+  parallel: true
+  commands:
+    format:
+      glob: 'src/**/*.{js,ts,json}'
+      run: npx prettier --write --log-level=warn {staged_files}
+      stage_fixed: true
+    lint:
+      glob: 'src/*.{js,ts}'
+      run: npx cross-env NODE_ENV=production eslint --fix --color --report-unused-disable-directives --max-warnings 0
+    typecheck:
+      glob: 'src/*.ts'
+      run: npm run typecheck
+
+commit-msg:
+  commands:
+    check-commit-message-format:
+      run: npx commitlint --edit
+
+pre-push:
+  commands:
+    audit:
+      run: npm audit
+    tests:
+      run: npm test
+      root: test

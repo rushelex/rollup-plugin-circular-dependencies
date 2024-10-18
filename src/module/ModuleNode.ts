@@ -1,4 +1,4 @@
-import { type ModuleInfo } from './types';
+import type { ModuleInfo } from './types';
 
 export class ModuleNode {
   public id: string;

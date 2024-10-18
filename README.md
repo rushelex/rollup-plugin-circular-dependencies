@@ -34,11 +34,9 @@ export default {
   input: 'src/main.js',
   output: {
     file: 'bundle.js',
-    format: 'cjs'
+    format: 'cjs',
   },
-  plugins: [
-    circleDependency()
-  ],
+  plugins: [circleDependency()],
 };
 ```
 
@@ -54,7 +52,7 @@ export default {
   input: 'src/main.js',
   output: {
     file: 'bundle.js',
-    format: 'cjs'
+    format: 'cjs',
   },
   plugins: [
     circularDependencies({
@@ -62,7 +60,7 @@ export default {
       include: [/\.[jt]sx?$/],
       // Exclude specific files based on a RegExp or a glob pattern
       exclude: [/[\\/]node_modules[\\/]/, /[\\/]\.git[\\/]/],
-      // Throw Vite error instead of warning
+      // Throw Rollup error instead of warning
       throwOnError: true,
       // Path to the file with scan results. By default, the result is output to the console
       outputFilePath: './circular-deps-output',

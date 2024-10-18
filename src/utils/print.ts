@@ -1,8 +1,8 @@
-import { type PluginContext } from 'rollup';
+import type { PluginContext } from 'rollup';
 
-import { type Context } from '../context';
-import { type ModuleNode } from '../module';
-import { type CircularDependenciesData } from '../types';
+import type { Context } from '../context';
+import type { ModuleNode } from '../module';
+import type { CircularDependenciesData } from '../types';
 
 import { createPrinters } from './printers';
 
@@ -11,11 +11,13 @@ const ERROR_MESSAGE = 'Circular dependencies has been detected';
 export function printCycleNodes(ctx: Context, cycleNodes: Map<string, ModuleNode[]>, pluginContext: PluginContext) {
   const rawData = getRawData(cycleNodes);
 
+  // eslint-disable-next-line ts/no-unsafe-assignment
   const formattedData = ctx.options.formatOut(transformNodePaths(ctx, rawData));
 
   ctx.options.onEnd(
     {
       rawOutput: rawData,
+      // eslint-disable-next-line ts/no-unsafe-assignment
       formattedOutput: formattedData,
     },
     pluginContext,
@@ -50,7 +52,6 @@ function groupByFirstNodePath(data: Array<Array<ModuleNode['id']>>) {
   return data.reduce<CircularDependenciesData>((acc, curNodes) => {
     const firstNodeId = curNodes[0];
 
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     acc[firstNodeId] ??= [];
 
     acc[firstNodeId].push(curNodes);

@@ -1,9 +1,8 @@
 import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
 import { dirname } from 'node:path';
 
-import { type Context } from '../context';
+import type { Context } from '../context';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type FormattedData = any;
 
 interface PrinterConstructorParams {
@@ -30,7 +29,7 @@ class FilePrinter extends Printer {
   }
 
   public print(data: FormattedData): void {
-    const resultData = data ? data.toString() : '';
+    const resultData = data ? String(data) : '';
     const dirPath = dirname(this.ctx.options.outputFilePath);
 
     if (!existsSync(dirPath)) {
@@ -46,16 +45,18 @@ class FilePrinter extends Printer {
 class ConsolePrinter extends Printer {
   public shouldPrint(data: FormattedData): boolean {
     const isConsolePrinter = !this.ctx.options.outputFilePath;
-    const isDataExists = data || data === 0 || (typeof data === 'string' && data.length > 0);
+    const isDataExists = !!data || data === 0 || (typeof data === 'string' && data.length > 0);
 
     return isConsolePrinter && isDataExists;
   }
 
   public print(data: FormattedData): void {
-    console.info('\n\n' + data?.toString() + '\n');
+    // eslint-disable-next-line no-console
+    console.info(`\n\n${String(data)}\n`);
   }
 }
 
 export function createPrinters(params: PrinterConstructorParams): Printer[] {
-  return [new FilePrinter(params), new ConsolePrinter(params)];
+  const printers = [FilePrinter, ConsolePrinter];
+  return printers.map((PrinterConstructor) => new PrinterConstructor(params));
 }

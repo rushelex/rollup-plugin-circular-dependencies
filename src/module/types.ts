@@ -1,5 +1,5 @@
 /**
- * Duplicates Rollup's `ModuleInfo` interface for backwards compatibility
+ * Duplicates part of Rollup's `ModuleInfo` interface for backwards compatibility
  */
 export interface ModuleInfo {
   id: string;

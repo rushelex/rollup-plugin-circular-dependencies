@@ -1,7 +1,7 @@
 import type { PluginContext } from 'rollup';
 
-import { type Context } from '../context';
-import { type ModuleNode } from '../module';
+import type { Context } from '../context';
+import type { ModuleNode } from '../module';
 
 export function generateModuleTree(ctx: Context, rootModuleNode: ModuleNode) {
   const createdModuleNode = new Set<string>();
@@ -66,7 +66,8 @@ export function generateCycleNodesMap(ctx: Context, rootModuleNode: ModuleNode, 
         detectedNodeIds.add(childNode.id);
 
         generateAndInsertCycleNodes(childNode, visitedPaths, cycleNodesMap);
-      } else {
+      }
+      else {
         depthFirstTraversal(childNode, visitedPaths);
       }
     }

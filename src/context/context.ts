@@ -1,7 +1,7 @@
 import { createFilter } from '@rollup/pluginutils';
 
-import { type ModuleNode } from '../module';
-import { type Options } from '../types';
+import type { ModuleNode } from '../module';
+import type { Options } from '../types';
 
 import { formatOptions } from './formatOptions';
 

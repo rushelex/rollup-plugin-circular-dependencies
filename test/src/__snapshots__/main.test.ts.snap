@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`should call lifecycle callbacks 1`] = `
+exports[`main test > should call lifecycle callbacks 1`] = `
 "[circularDependencies] onStart
 [circularDependencies] onDetected | modulePath :>> src/fixtures/data/async_module/circleDep/data/data1.js
 [circularDependencies] onDetected | modulePath :>> src/fixtures/data/async_module/depSelf/depSelf.js
@@ -90,7 +90,7 @@ src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep1.js
 "
 `;
 
-exports[`should print basic output in console 1`] = `
+exports[`main test > should print basic output in console 1`] = `
 "
 
 src/fixtures/data/async_module/circleDep/data/data1.js
@@ -116,7 +116,7 @@ src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep1.js
 "
 `;
 
-exports[`should print basic output in file 1`] = `
+exports[`main test > should print basic output in file 1`] = `
 "{
   "src/fixtures/data/async_module/circleDep/data/data1.js": [
     [
@@ -165,7 +165,7 @@ exports[`should print basic output in file 1`] = `
 }"
 `;
 
-exports[`should print json output in console 1`] = `
+exports[`main test > should print json output in console 1`] = `
 "
 
 {
@@ -218,7 +218,7 @@ exports[`should print json output in console 1`] = `
 "
 `;
 
-exports[`should print pretty output in file 1`] = `
+exports[`main test > should print pretty output in file 1`] = `
 "src/fixtures/data/async_module/circleDep/data/data1.js
     src/fixtures/data/async_module/circleDep/data/data1.js -> src/fixtures/data/async_module/circleDep/data/data2.js
     src/fixtures/data/async_module/circleDep/data/data1.js -> src/fixtures/data/async_module/circleDep/data/data3.js
@@ -240,4 +240,4 @@ src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep1.js
     src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep1.js -> src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep2.js -> src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep3.js"
 `;
 
-exports[`should skip detecting 1`] = `""`;
+exports[`main test > should skip detecting 1`] = `""`;

@@ -1,8 +1,11 @@
-import { join, relative } from 'node:path';
 import type { FilterPattern } from '@rollup/pluginutils';
 
+import { join, relative } from 'node:path';
+import { cwd } from 'node:process';
+
 import type { CircularDependenciesData, Options } from '../types';
-import { DefaultFormatters } from '../utils';
+
+import { DefaultFormatters } from '../utils/formatters';
 
 const DEFAULT_EXCLUDE: RegExp[] = [/[\\/]node_modules[\\/]/, /[\\/]\.git[\\/]/];
 
@@ -40,7 +43,7 @@ export function formatOptions(options: Options): Required<Options> {
 
 function normalizeOutputFilePath(outputFilePath: string) {
   if (outputFilePath) {
-    return join(process.cwd(), outputFilePath);
+    return join(cwd(), outputFilePath);
   }
 
   return outputFilePath;
@@ -48,7 +51,7 @@ function normalizeOutputFilePath(outputFilePath: string) {
 
 function normalizeExcludePattern(exclude: FilterPattern) {
   if (Array.isArray(exclude)) {
-    return [...exclude, ...DEFAULT_EXCLUDE];
+    return [...(exclude as ReadonlyArray<string | RegExp>), ...DEFAULT_EXCLUDE];
   }
 
   if (exclude) {
@@ -59,11 +62,13 @@ function normalizeExcludePattern(exclude: FilterPattern) {
 }
 
 function defaultFormatOutModulePath(path: string) {
-  return relative(process.cwd(), path);
+  return relative(cwd(), path);
 }
 
 function getDefaultFormatOut(outputFilePath: Options['outputFilePath']) {
   return (data: CircularDependenciesData) => {
-    return outputFilePath ? DefaultFormatters.JSON()(data) : DefaultFormatters.Pretty({ colors: true })(data);
+    return typeof outputFilePath === 'string' && outputFilePath.trim() !== ''
+      ? DefaultFormatters.JSON()(data)
+      : DefaultFormatters.Pretty({ colors: true })(data);
   };
 }
