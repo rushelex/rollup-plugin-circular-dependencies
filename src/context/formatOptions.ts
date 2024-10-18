@@ -14,11 +14,11 @@ export function formatOptions(options: Options): Required<Options> {
     enabled = true,
     include = [/\.[jt]sx?$/],
     throwOnError = true,
-    formatOutModulePath,
+    formatOutModulePath = defaultFormatOutModulePath,
     formatOut,
-    onStart,
-    onDetected,
-    onEnd,
+    onStart = () => undefined,
+    onDetected = () => undefined,
+    onEnd = () => undefined,
   } = options;
 
   let { exclude = DEFAULT_EXCLUDE, outputFilePath = '' } = options;
@@ -33,11 +33,11 @@ export function formatOptions(options: Options): Required<Options> {
     exclude,
     throwOnError,
     outputFilePath,
-    formatOutModulePath: formatOutModulePath ?? defaultFormatOutModulePath,
+    formatOutModulePath,
     formatOut: formatOut ?? getDefaultFormatOut(outputFilePath),
-    onStart: onStart ?? (() => undefined),
-    onDetected: onDetected ?? (() => undefined),
-    onEnd: onEnd ?? (() => undefined),
+    onStart,
+    onDetected,
+    onEnd,
   };
 }
 

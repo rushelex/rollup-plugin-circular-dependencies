@@ -1,5 +1,5 @@
 import { isNil, isObject, isString } from 'lodash-es';
-import color from 'picocolors';
+import { createColors } from 'picocolors';
 
 import type { CircularDependenciesData } from '../types';
 
@@ -22,6 +22,8 @@ function JSONFormatter(): Formatter {
 function PrettyFormatter(config?: PrettyFormatterConfig): Formatter {
   const { colors = true } = config || {};
 
+  const color = createColors(colors);
+
   return (data): string => {
     if (!isNil(data) && isObject(data) && Object.keys(data).length === 0) {
       return '';
@@ -38,10 +40,10 @@ function PrettyFormatter(config?: PrettyFormatterConfig): Formatter {
 
       let group = '';
 
-      group += colors ? color.yellow(entryModuleId) : entryModuleId;
+      group += color.yellow(entryModuleId);
 
       for (const currentCir of moduleNodes) {
-        group += `\n` + `    ${currentCir.join(colors ? color.blue(' -> ') : ' -> ')}`;
+        group += `\n` + `    ${currentCir.join(color.blue(' -> '))}`;
       }
 
       groups.push(group);

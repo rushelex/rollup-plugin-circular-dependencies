@@ -46,46 +46,46 @@ exports[`main test > should call lifecycle callbacks 1`] = `
     ]
   ]
 }
-[circularDependencies] onEnd | formattedOutput :>> src/fixtures/data/async_module/circleDep/data/data1.js
-    src/fixtures/data/async_module/circleDep/data/data1.js -> src/fixtures/data/async_module/circleDep/data/data2.js
-    src/fixtures/data/async_module/circleDep/data/data1.js -> src/fixtures/data/async_module/circleDep/data/data3.js
+[circularDependencies] onEnd | formattedOutput :>> [33msrc/fixtures/data/async_module/circleDep/data/data1.js[39m
+    src/fixtures/data/async_module/circleDep/data/data1.js[34m -> [39msrc/fixtures/data/async_module/circleDep/data/data2.js
+    src/fixtures/data/async_module/circleDep/data/data1.js[34m -> [39msrc/fixtures/data/async_module/circleDep/data/data3.js
 
-src/fixtures/data/async_module/depSelf/depSelf.js
+[33msrc/fixtures/data/async_module/depSelf/depSelf.js[39m
     src/fixtures/data/async_module/depSelf/depSelf.js
 
-src/fixtures/data/async_module/indirectCircleDep/data/data1.js
-    src/fixtures/data/async_module/indirectCircleDep/data/data1.js -> src/fixtures/data/async_module/indirectCircleDep/data/data2.js -> src/fixtures/data/async_module/indirectCircleDep/data/data3.js
+[33msrc/fixtures/data/async_module/indirectCircleDep/data/data1.js[39m
+    src/fixtures/data/async_module/indirectCircleDep/data/data1.js[34m -> [39msrc/fixtures/data/async_module/indirectCircleDep/data/data2.js[34m -> [39msrc/fixtures/data/async_module/indirectCircleDep/data/data3.js
 
-src/fixtures/data/sync_module/circleDep/circleDep1.js
-    src/fixtures/data/sync_module/circleDep/circleDep1.js -> src/fixtures/data/sync_module/circleDep/circleDep2.js
-    src/fixtures/data/sync_module/circleDep/circleDep1.js -> src/fixtures/data/sync_module/circleDep/circleDep3.js
+[33msrc/fixtures/data/sync_module/circleDep/circleDep1.js[39m
+    src/fixtures/data/sync_module/circleDep/circleDep1.js[34m -> [39msrc/fixtures/data/sync_module/circleDep/circleDep2.js
+    src/fixtures/data/sync_module/circleDep/circleDep1.js[34m -> [39msrc/fixtures/data/sync_module/circleDep/circleDep3.js
 
-src/fixtures/data/sync_module/depSelf/depSelf1.js
+[33msrc/fixtures/data/sync_module/depSelf/depSelf1.js[39m
     src/fixtures/data/sync_module/depSelf/depSelf1.js
 
-src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep1.js
-    src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep1.js -> src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep2.js -> src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep3.js
+[33msrc/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep1.js[39m
+    src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep1.js[34m -> [39msrc/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep2.js[34m -> [39msrc/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep3.js
 
 
-src/fixtures/data/async_module/circleDep/data/data1.js
-    src/fixtures/data/async_module/circleDep/data/data1.js -> src/fixtures/data/async_module/circleDep/data/data2.js
-    src/fixtures/data/async_module/circleDep/data/data1.js -> src/fixtures/data/async_module/circleDep/data/data3.js
+[33msrc/fixtures/data/async_module/circleDep/data/data1.js[39m
+    src/fixtures/data/async_module/circleDep/data/data1.js[34m -> [39msrc/fixtures/data/async_module/circleDep/data/data2.js
+    src/fixtures/data/async_module/circleDep/data/data1.js[34m -> [39msrc/fixtures/data/async_module/circleDep/data/data3.js
 
-src/fixtures/data/async_module/depSelf/depSelf.js
+[33msrc/fixtures/data/async_module/depSelf/depSelf.js[39m
     src/fixtures/data/async_module/depSelf/depSelf.js
 
-src/fixtures/data/async_module/indirectCircleDep/data/data1.js
-    src/fixtures/data/async_module/indirectCircleDep/data/data1.js -> src/fixtures/data/async_module/indirectCircleDep/data/data2.js -> src/fixtures/data/async_module/indirectCircleDep/data/data3.js
+[33msrc/fixtures/data/async_module/indirectCircleDep/data/data1.js[39m
+    src/fixtures/data/async_module/indirectCircleDep/data/data1.js[34m -> [39msrc/fixtures/data/async_module/indirectCircleDep/data/data2.js[34m -> [39msrc/fixtures/data/async_module/indirectCircleDep/data/data3.js
 
-src/fixtures/data/sync_module/circleDep/circleDep1.js
-    src/fixtures/data/sync_module/circleDep/circleDep1.js -> src/fixtures/data/sync_module/circleDep/circleDep2.js
-    src/fixtures/data/sync_module/circleDep/circleDep1.js -> src/fixtures/data/sync_module/circleDep/circleDep3.js
+[33msrc/fixtures/data/sync_module/circleDep/circleDep1.js[39m
+    src/fixtures/data/sync_module/circleDep/circleDep1.js[34m -> [39msrc/fixtures/data/sync_module/circleDep/circleDep2.js
+    src/fixtures/data/sync_module/circleDep/circleDep1.js[34m -> [39msrc/fixtures/data/sync_module/circleDep/circleDep3.js
 
-src/fixtures/data/sync_module/depSelf/depSelf1.js
+[33msrc/fixtures/data/sync_module/depSelf/depSelf1.js[39m
     src/fixtures/data/sync_module/depSelf/depSelf1.js
 
-src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep1.js
-    src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep1.js -> src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep2.js -> src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep3.js
+[33msrc/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep1.js[39m
+    src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep1.js[34m -> [39msrc/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep2.js[34m -> [39msrc/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep3.js
 
 "
 `;
@@ -93,25 +93,25 @@ src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep1.js
 exports[`main test > should print basic output in console 1`] = `
 "
 
-src/fixtures/data/async_module/circleDep/data/data1.js
-    src/fixtures/data/async_module/circleDep/data/data1.js -> src/fixtures/data/async_module/circleDep/data/data2.js
-    src/fixtures/data/async_module/circleDep/data/data1.js -> src/fixtures/data/async_module/circleDep/data/data3.js
+[33msrc/fixtures/data/async_module/circleDep/data/data1.js[39m
+    src/fixtures/data/async_module/circleDep/data/data1.js[34m -> [39msrc/fixtures/data/async_module/circleDep/data/data2.js
+    src/fixtures/data/async_module/circleDep/data/data1.js[34m -> [39msrc/fixtures/data/async_module/circleDep/data/data3.js
 
-src/fixtures/data/async_module/depSelf/depSelf.js
+[33msrc/fixtures/data/async_module/depSelf/depSelf.js[39m
     src/fixtures/data/async_module/depSelf/depSelf.js
 
-src/fixtures/data/async_module/indirectCircleDep/data/data1.js
-    src/fixtures/data/async_module/indirectCircleDep/data/data1.js -> src/fixtures/data/async_module/indirectCircleDep/data/data2.js -> src/fixtures/data/async_module/indirectCircleDep/data/data3.js
+[33msrc/fixtures/data/async_module/indirectCircleDep/data/data1.js[39m
+    src/fixtures/data/async_module/indirectCircleDep/data/data1.js[34m -> [39msrc/fixtures/data/async_module/indirectCircleDep/data/data2.js[34m -> [39msrc/fixtures/data/async_module/indirectCircleDep/data/data3.js
 
-src/fixtures/data/sync_module/circleDep/circleDep1.js
-    src/fixtures/data/sync_module/circleDep/circleDep1.js -> src/fixtures/data/sync_module/circleDep/circleDep2.js
-    src/fixtures/data/sync_module/circleDep/circleDep1.js -> src/fixtures/data/sync_module/circleDep/circleDep3.js
+[33msrc/fixtures/data/sync_module/circleDep/circleDep1.js[39m
+    src/fixtures/data/sync_module/circleDep/circleDep1.js[34m -> [39msrc/fixtures/data/sync_module/circleDep/circleDep2.js
+    src/fixtures/data/sync_module/circleDep/circleDep1.js[34m -> [39msrc/fixtures/data/sync_module/circleDep/circleDep3.js
 
-src/fixtures/data/sync_module/depSelf/depSelf1.js
+[33msrc/fixtures/data/sync_module/depSelf/depSelf1.js[39m
     src/fixtures/data/sync_module/depSelf/depSelf1.js
 
-src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep1.js
-    src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep1.js -> src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep2.js -> src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep3.js
+[33msrc/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep1.js[39m
+    src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep1.js[34m -> [39msrc/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep2.js[34m -> [39msrc/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep3.js
 
 "
 `;

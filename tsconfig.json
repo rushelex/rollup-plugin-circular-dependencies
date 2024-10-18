@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
     "target": "es2020",
-    "lib": ["es2020", "dom", "dom.iterable"],
+    "lib": ["es2020"],
     "useDefineForClassFields": true,
     "baseUrl": ".",
     "rootDir": ".",
-    "module": "ESNext",
+    "module": "esnext",
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "strict": true,
