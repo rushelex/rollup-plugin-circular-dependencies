@@ -1,3 +1,10 @@
+# [1.2.0-rc.3](https://github.com/rushelex/rollup-plugin-circular-dependencies/compare/v1.2.0-rc.2...v1.2.0-rc.3) (2024-10-18)
+
+
+### Bug Fixes
+
+* reduce bundle size ([cb9729f](https://github.com/rushelex/rollup-plugin-circular-dependencies/commit/cb9729f09ea3502e90b9082c6598f5bf731ef91c))
+
 # [1.2.0-rc.2](https://github.com/rushelex/rollup-plugin-circular-dependencies/compare/v1.2.0-rc.1...v1.2.0-rc.2) (2024-10-18)
 
 
