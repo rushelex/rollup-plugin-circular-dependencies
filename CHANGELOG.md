@@ -1,3 +1,10 @@
+# [1.2.0-rc.5](https://github.com/rushelex/rollup-plugin-circular-dependencies/compare/v1.2.0-rc.4...v1.2.0-rc.5) (2024-10-18)
+
+
+### Bug Fixes
+
+* change release config ([a6d33c8](https://github.com/rushelex/rollup-plugin-circular-dependencies/commit/a6d33c84b6aac252fdc58272abf52bac46799b15))
+
 # [1.2.0-rc.4](https://github.com/rushelex/rollup-plugin-circular-dependencies/compare/v1.2.0-rc.3...v1.2.0-rc.4) (2024-10-18)
 
 
