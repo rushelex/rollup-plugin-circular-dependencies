@@ -1,3 +1,10 @@
+# [1.2.0-rc.1](https://github.com/rushelex/rollup-plugin-circular-dependencies/compare/v1.1.2...v1.2.0-rc.1) (2024-10-18)
+
+
+### Features
+
+* some improves ([1f27af5](https://github.com/rushelex/rollup-plugin-circular-dependencies/commit/1f27af5656abed8ae9a416c346f5060033d248a4))
+
 ## [1.1.2](https://github.com/rushelex/rollup-plugin-circular-dependencies/compare/v1.1.1...v1.1.2) (2024-02-19)
 
 
