@@ -37,7 +37,7 @@ export default {
     format: 'cjs'
   },
   plugins: [
-    circleDependency()
+    circularDependencies()
   ],
 };
 ```
