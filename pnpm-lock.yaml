@@ -52,6 +52,9 @@ importers:
 
   packages/plugin:
     dependencies:
+      '@rollup/pluginutils':
+        specifier: ^5.3.0
+        version: 5.3.0(rollup@4.57.1)
       rollup:
         specifier: ^2.14.0||^3.0.0||^4.0.0
         version: 4.57.1
@@ -59,9 +62,6 @@ importers:
       '@fast-check/vitest':
         specifier: ^0.2.4
         version: 0.2.4(vitest@4.0.18(@types/node@24.10.13)(jiti@2.6.1)(yaml@2.8.2))
-      '@rollup/pluginutils':
-        specifier: ^5.3.0
-        version: 5.3.0(rollup@4.57.1)
       '@total-typescript/ts-reset':
         specifier: ^0.6.1
         version: 0.6.1(patch_hash=a52343a214572476b4f4b78217b9ee0294487b7a8245357eb4fc1804ff5c56cd)
