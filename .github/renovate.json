@@ -2,7 +2,7 @@
   "extends": [
     "config:js-lib"
   ],
-  "labels":[
+  "labels": [
     "renovate-bot"
   ],
   "ignoreDeps": [

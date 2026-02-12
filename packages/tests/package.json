@@ -1,0 +1,19 @@
+{
+  "name": "tests",
+  "type": "module",
+  "private": true,
+  "engines": { "node": ">=20.12.0" },
+  "scripts": {
+    "pretest": "pnpm --filter rollup-plugin-circular-dependencies run build",
+    "test": "vitest run",
+    "posttest": "rimraf dist",
+    "test:update": "pnpm run test --update"
+  },
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^12.3.0",
+    "@total-typescript/ts-reset": "^0.6.1",
+    "rimraf": "^6.1.2",
+    "rollup": "^2.14.0",
+    "rollup-plugin-circular-dependencies": "workspace:*"
+  }
+}

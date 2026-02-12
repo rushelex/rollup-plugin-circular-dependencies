@@ -1,0 +1,23 @@
+commit-msg:
+  commands:
+    lint commit message:
+      run: pnpm commitlint --edit {1}
+
+pre-commit:
+  parallel: true
+  jobs:
+    - name: typecheck
+      run: pnpm typecheck
+
+    - name: lint
+      run: pnpm lint:fix --no-warn-ignored {staged_files}
+      glob: "*.{js,cjs,mjs,jsx,ts,cts,mts,tsx,json,yaml,yml}"
+      stage_fixed: true
+
+pre-push:
+  jobs:
+    - name: packages audit
+      run: pnpm audit
+
+    - name: tests
+      run: pnpm test
