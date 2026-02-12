@@ -4,7 +4,6 @@
   "private": true,
   "engines": { "node": ">=20.12.0" },
   "scripts": {
-    "pretest": "pnpm --filter rollup-plugin-circular-dependencies run build",
     "test": "vitest run",
     "posttest": "rimraf dist",
     "test:update": "pnpm run test --update"

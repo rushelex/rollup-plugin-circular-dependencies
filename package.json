@@ -9,9 +9,11 @@
   "scripts": {
     "build": "pnpm -r run build",
     "dev": "pnpm -r run dev",
+    "prelint": "pnpm run build",
     "lint": "eslint --cache",
     "lint:fix": "eslint --cache --fix",
     "typecheck": "pnpm -r run typecheck",
+    "pretest": "pnpm run build",
     "test": "pnpm -r run test",
     "test:update": "pnpm -r run test:update",
     "test:coverage": "pnpm -r run test:coverage",

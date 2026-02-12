@@ -8,28 +8,8 @@ on:
       - reopened
 
 jobs:
-  install:
-    name: Install
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout the repository
-        uses: actions/checkout@v4
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "lts/*"
-          cache: pnpm
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-
   lint:
     name: Linting
-    needs: install
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the repository
@@ -46,13 +26,15 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm build
 
       - name: Run linter
         run: pnpm lint
 
   typecheck:
     name: Type checking
-    needs: install
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the repository
@@ -69,13 +51,15 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm build
 
       - name: Run typecheck
         run: pnpm typecheck
 
   tests:
     name: Tests
-    needs: install
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the repository
@@ -92,6 +76,9 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm build
 
       - name: Run tests
         run: pnpm test
