@@ -15,21 +15,20 @@
     "test": "pnpm -r run test",
     "test:update": "pnpm -r run test:update",
     "test:coverage": "pnpm -r run test:coverage",
-    "release": "semantic-release"
+    "changelog": "changelogen --dir packages/plugin",
+    "release": "changelogen --dir packages/plugin --release --push",
+    "release:rc": "changelogen --dir packages/plugin --prerelease rc --release --push"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^7.4.3",
     "@commitlint/cli": "^20.4.1",
     "@commitlint/config-conventional": "^20.4.1",
-    "@semantic-release/changelog": "^6.0.3",
-    "@semantic-release/git": "^10.0.1",
     "@types/node": "^24.10.13",
-    "bumpp": "^10.4.1",
+    "changelogen": "^0.6.2",
     "eslint": "^9.39.2",
     "eslint-plugin-format": "^1.4.0",
     "jsonc-eslint-parser": "^2.4.2",
     "lefthook": "^2.1.0",
-    "semantic-release": "^25.0.3",
     "taze": "^19.9.2",
     "typescript": "^5.9.3",
     "vitest": "^4.0.18"

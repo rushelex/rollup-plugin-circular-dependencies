@@ -4,74 +4,91 @@ on:
   push:
     branches:
       - main
-      - next
-      - beta
-      - alpha
       - rc
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: Force bump type (leave empty for auto)
+        type: choice
+        required: false
+        default: ""
+        options:
+          - ""
+          - major
+          - minor
+          - patch
 
 permissions:
-  contents: read # for checkout
+  contents: write
+  id-token: write
 
 jobs:
-  prepare:
-    name: Prepare
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout the repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "lts/*"
-
-      - name: Cache dependencies
-        id: cache-deps
-        uses: actions/cache@v4
-        with:
-          path: ./node_modules
-          key: deps-${{ hashFiles('package-lock.json') }}
-
-      - name: Install dependencies
-        if: steps.cache-deps.outputs.cache-hit != 'true'
-        run: npm clean-install
-
-      - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
-        run: npm audit signatures
-
   release:
     name: Release
-    needs:
-      - prepare
     runs-on: ubuntu-latest
-    permissions:
-      contents: write # to be able to publish a GitHub release
-      issues: write # to be able to comment on released issues
-      pull-requests: write # to be able to comment on released pull requests
-      id-token: write # to enable use of OIDC for npm provenance
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GH_TOKEN_SEMANTIC_RELEASE }}
           fetch-depth: 0
+          ssh-key: ${{ secrets.DEPLOY_KEY }}
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "lts/*"
+          cache: pnpm
 
-      - name: Restore dependencies
-        uses: actions/cache/restore@v4
-        with:
-          path: ./node_modules
-          key: deps-${{ hashFiles('package-lock.json') }}
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
       - name: Build
-        run: npm run build
+        run: pnpm build
+
+      - name: Run tests
+        run: pnpm test
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Determine release arguments
+        id: args
+        run: |
+          ARGS="--dir packages/plugin"
+          BRANCH="${GITHUB_REF_NAME}"
+
+          # Prerelease for rc branch
+          if [ "$BRANCH" = "rc" ]; then
+            ARGS="$ARGS --prerelease rc"
+          fi
+
+          # Force bump type from workflow_dispatch
+          BUMP="${{ github.event.inputs.bump }}"
+          if [ -n "$BUMP" ]; then
+            ARGS="$ARGS --$BUMP"
+          fi
+
+          echo "args=$ARGS" >> "$GITHUB_OUTPUT"
 
       - name: Release
-        run: npm run release
+        run: npx changelogen ${{ steps.args.outputs.args }} --release --push
+
+      - name: Publish to npm
+        if: github.ref_name == 'main'
+        run: npm publish --provenance --access public
+        working-directory: packages/plugin
+
+      - name: Publish prerelease to npm
+        if: github.ref_name == 'rc'
+        run: npm publish --provenance --access public --tag rc
+        working-directory: packages/plugin
+
+      - name: Create GitHub Release
+        run: npx changelogen gh release --dir packages/plugin
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
