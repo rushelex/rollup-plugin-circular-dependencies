@@ -1,7 +1,7 @@
 import type { FilterPattern } from '@rollup/pluginutils';
-import type { LogHandlerWithDefault, PluginContext, Plugin as RollupPlugin } from 'rollup';
+import type { PluginContext } from 'rollup';
 
-import type { ModuleInfo, ModuleNode } from './module';
+import type { ModuleNode } from './module';
 
 export type CircularDependenciesData = Record<string, Array<Array<ModuleNode['id']>>>;
 
@@ -118,22 +118,3 @@ export interface Options {
    */
   onEnd?: (params: OptionsOnEndArgs, pluginContext: PluginContext) => void;
 }
-
-/**
- * Minimal subset of Rollup's `InputOptions` for cross-version compatibility.
- * Supports Rollup v2, v3, and v4.
- */
-interface InputOptions {
-  onLog?: LogHandlerWithDefault;
-  onwarn?: (warning: { code?: string; message: string } | string, defaultHandler: (warning: string | { code?: string; message: string }) => void) => void;
-}
-
-/**
- * Plugin interface compatible with both Rollup v3 and v4.
- * Uses a minimal subset of hooks to ensure cross-version support.
- */
-export type Plugin = Pick<RollupPlugin, 'name'> & {
-  options: (inputOptions: InputOptions) => void;
-  moduleParsed: (moduleInfo: ModuleInfo) => void;
-  generateBundle: () => void;
-};

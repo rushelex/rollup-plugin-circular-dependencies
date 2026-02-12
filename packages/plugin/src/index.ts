@@ -1,11 +1,17 @@
-import type { PluginContext } from 'rollup';
+import type { Plugin, PluginContext } from 'rollup';
 
-import type { Options, Plugin } from './types';
+import type { Options } from './types';
 
 import { PLUGIN_NAME, ROLLUP_CIRCULAR_DEPENDENCY_CODE } from './constants';
 import { Context } from './context';
 import { ModuleNode } from './module';
 import { generateCycleNodesMap, generateModuleTree, printCycleNodes } from './utils';
+
+/** Rollup v2 warning handler shape (before `onLog` was introduced in v3) */
+type LegacyOnWarn = (
+  warning: string | { code?: string; message: string },
+  defaultHandler: (warning: string | { code?: string; message: string }) => void,
+) => void;
 
 /**
  * Creates a Rollup plugin that detects circular dependencies in your project.
@@ -14,8 +20,10 @@ import { generateCycleNodesMap, generateModuleTree, printCycleNodes } from './ut
  * @param options - Plugin configuration options
  * @returns Rollup plugin instance
  *
- * @example Basic usage
+ * @example
  * ```ts
+ * // Basic usage
+ *
  * import circularDependencies from 'rollup-plugin-circular-dependencies';
  *
  * export default {
@@ -23,8 +31,10 @@ import { generateCycleNodesMap, generateModuleTree, printCycleNodes } from './ut
  * }
  * ```
  *
- * @example Advanced usage
+ * @example
  * ```ts
+ * // Advanced usage
+ *
  * import circularDependencies, { DefaultFormatters } from 'rollup-plugin-circular-dependencies';
  *
  * export default {
@@ -58,9 +68,11 @@ function circularDependencies(options: Options = {}): Plugin {
         };
       }
       else {
-        const savedOnWarn = inputOptions.onwarn;
+        // Rollup v2 compat: `onwarn` instead of `onLog`
+        const opts = inputOptions as unknown as { onwarn?: LegacyOnWarn };
+        const savedOnWarn = opts.onwarn;
 
-        inputOptions.onwarn = (warning, defaultHandler) => {
+        opts.onwarn = (warning, defaultHandler) => {
           const code = typeof warning === 'string' ? undefined : warning.code;
 
           if (code === ROLLUP_CIRCULAR_DEPENDENCY_CODE) {

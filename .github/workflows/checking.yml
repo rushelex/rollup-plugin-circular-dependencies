@@ -82,3 +82,34 @@ jobs:
 
       - name: Run tests
         run: pnpm test
+
+  tests-compat:
+    name: Tests (Rollup v${{ matrix.rollup }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        rollup: ["2", "3"]
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "lts/*"
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm build
+
+      - name: Override rollup version
+        run: pnpm --filter tests add -D rollup@${{ matrix.rollup }}
+
+      - name: Run integration tests
+        run: pnpm --filter tests run test
