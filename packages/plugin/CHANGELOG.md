@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.2.0-rc.8](https://github.com/rushelex/rollup-plugin-circular-dependencies/compare/v1.2.0-rc.7...v1.2.0-rc.8) (2026-02-13)
+
+### 📖 Documentation
+
+* update plugin options documentation with lifecycle hooks ([7add308](https://github.com/rushelex/rollup-plugin-circular-dependencies/commit/7add308e44352e6bf730885c10929beff8c47028))
+
 ## [1.2.0-rc.7](https://github.com/rushelex/rollup-plugin-circular-dependencies/compare/v1.2.0-rc.6...v1.2.0-rc.7) (2026-02-13)
 
 ### 🩹 Fixes
