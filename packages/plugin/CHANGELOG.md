@@ -1,6 +1,33 @@
 # Changelog
 
 
+## v1.1.3-rc.0
+
+[compare changes](https://github.com/rushelex/rollup-plugin-circular-dependencies/compare/v1.1.2...v1.1.3-rc.0)
+
+### 🚀 Enhancements
+
+- Remove ESM dependencies, support CJS and ESM native, bump Node.js support to >=20.12.0 ([1a8c4e0](https://github.com/rushelex/rollup-plugin-circular-dependencies/commit/1a8c4e0))
+
+### 🩹 Fixes
+
+- Add Rollup v2 compatibility for pluginContext.info() ([cc95c8d](https://github.com/rushelex/rollup-plugin-circular-dependencies/commit/cc95c8d))
+
+### 🏡 Chore
+
+- Replace semantic-release with changelogen ([2a8effc](https://github.com/rushelex/rollup-plugin-circular-dependencies/commit/2a8effc))
+- Move @rollup/pluginutils from devDependencies to dependencies ([d2cb02b](https://github.com/rushelex/rollup-plugin-circular-dependencies/commit/d2cb02b))
+
+### 🤖 CI
+
+- Streamline workflow by removing install job and adding build steps ([4ec892c](https://github.com/rushelex/rollup-plugin-circular-dependencies/commit/4ec892c))
+- Add Rollup v2/v3 compatibility testing workflow ([ff3528a](https://github.com/rushelex/rollup-plugin-circular-dependencies/commit/ff3528a))
+- Add Rollup v4 to compatibility testing matrix ([b12f382](https://github.com/rushelex/rollup-plugin-circular-dependencies/commit/b12f382))
+
+### ❤️ Contributors
+
+- Aleksey Shelementev ([@rushelex](https://github.com/rushelex))
+
 ## v1.1.2
 
 [compare changes](https://github.com/rushelex/rollup-plugin-circular-dependencies/compare/v1.1.1...v1.1.2)
