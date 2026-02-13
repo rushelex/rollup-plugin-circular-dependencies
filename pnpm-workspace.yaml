@@ -4,6 +4,7 @@ trustPolicy: no-downgrade
 
 packages:
   - "packages/*"
+  - "examples/*"
 
 patchedDependencies:
   "@total-typescript/ts-reset": patches/@total-typescript__ts-reset.patch

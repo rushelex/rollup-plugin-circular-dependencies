@@ -59,6 +59,15 @@ importers:
         specifier: ^4.0.18
         version: 4.0.18(@types/node@24.10.13)(jiti@2.6.1)(yaml@2.8.2)
 
+  examples/watch-mode:
+    devDependencies:
+      rollup:
+        specifier: ^4.0.0
+        version: 4.57.1
+      rollup-plugin-circular-dependencies:
+        specifier: workspace:*
+        version: link:../../packages/plugin
+
   packages/plugin:
     dependencies:
       '@rollup/pluginutils':
