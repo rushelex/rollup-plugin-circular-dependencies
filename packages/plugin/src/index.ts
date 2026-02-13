@@ -73,6 +73,10 @@ function circularDependencies(options: Options = {}): Plugin {
       };
     },
 
+    buildStart() {
+      context.reset();
+    },
+
     moduleParsed(moduleInfo) {
       if (!context.options.enabled || !context.shouldProcessModule(moduleInfo.id)) {
         return;
@@ -106,8 +110,6 @@ function circularDependencies(options: Options = {}): Plugin {
       const cycleNodes = generateCycleNodesMap(context, context.entryModuleNode, pluginContext);
 
       printCycleNodes(context, cycleNodes, pluginContext, detectionStartTime);
-
-      context.reset();
     },
   };
 }
