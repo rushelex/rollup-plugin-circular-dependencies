@@ -111,7 +111,7 @@ function defaultFormatOutModulePath(outputFilePath: string) {
 }
 
 function getDefaultFormatOut(outputFilePath: Options['outputFilePath']) {
-  return (data: CircularDependenciesData) => {
-    return outputFilePath ? DefaultFormatters.JSON()(data) : DefaultFormatters.Pretty()(data);
-  };
+  const formatter = outputFilePath ? DefaultFormatters.JSON() : DefaultFormatters.Pretty();
+
+  return (data: CircularDependenciesData) => formatter(data);
 }
