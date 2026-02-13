@@ -45,7 +45,7 @@ export function printCycleNodes(
     }
   }
 
-  validateCycleData(filteredData, ctx, pluginContext);
+  validateCycleData(pluginContext, ctx, metrics.cyclesFound);
 }
 
 function buildRawData(data: Map<string, ModuleNode[]>): CircularDependenciesData {
@@ -134,12 +134,10 @@ function logDebugInfo(
 }
 
 function validateCycleData(
-  data: CircularDependenciesData,
-  ctx: Context,
   pluginContext: PluginContext,
+  ctx: Context,
+  cycleCount: number,
 ): void {
-  const cycleCount = Object.values(data).flat().length;
-
   if (cycleCount === 0) {
     return;
   }
