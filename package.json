@@ -16,21 +16,19 @@
     "pretest": "pnpm -r run build",
     "test": "pnpm -r run test",
     "test:update": "pnpm -r run test:update",
-    "test:coverage": "pnpm -r run test:coverage",
-    "changelog": "changelogen --dir packages/plugin",
-    "release": "changelogen --dir packages/plugin --release --push",
-    "release:rc": "changelogen --dir packages/plugin --prerelease rc --release --push"
+    "test:coverage": "pnpm -r run test:coverage"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^7.4.3",
     "@commitlint/cli": "^20.4.1",
     "@commitlint/config-conventional": "^20.4.1",
+    "@release-it/conventional-changelog": "^10.0.5",
     "@types/node": "^24.10.13",
-    "changelogen": "^0.6.2",
     "eslint": "^9.39.2",
     "eslint-plugin-format": "^1.4.0",
     "jsonc-eslint-parser": "^2.4.2",
     "lefthook": "^2.1.0",
+    "release-it": "^19.2.4",
     "taze": "^19.9.2",
     "typescript": "^5.9.3",
     "vitest": "^4.0.18"

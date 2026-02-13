@@ -1,0 +1,42 @@
+{
+  "$schema": "https://unpkg.com/release-it/schema/release-it.json",
+  "git": {
+    "tagName": "v${version}",
+    "commitMessage": "chore(release): v${version} [skip ci]",
+    "push": true,
+    "requireUpstream": false,
+    "requireCleanWorkingDir": true
+  },
+  "github": {
+    "release": true,
+    "releaseName": "v${version}"
+  },
+  "npm": {
+    "publish": false
+  },
+  "hooks": {
+    "after:bump": "cd ../.. && pnpm install --lockfile-only && git add pnpm-lock.yaml"
+  },
+  "plugins": {
+    "@release-it/conventional-changelog": {
+      "preset": {
+        "name": "conventionalcommits",
+        "types": [
+          { "type": "feat", "section": "🚀 Enhancements" },
+          { "type": "perf", "section": "🔥 Performance" },
+          { "type": "fix", "section": "🩹 Fixes" },
+          { "type": "refactor", "section": "💅 Refactors" },
+          { "type": "build", "section": "📦 Build" },
+          { "type": "types", "section": "🌊 Types" },
+          { "type": "docs", "section": "📖 Documentation" },
+          { "type": "chore", "section": "🏡 Chore" },
+          { "type": "test", "section": "✅ Tests" },
+          { "type": "style", "section": "🎨 Styles" },
+          { "type": "ci", "section": "🤖 CI" }
+        ]
+      },
+      "infile": "CHANGELOG.md",
+      "strictSemVer": true
+    }
+  }
+}

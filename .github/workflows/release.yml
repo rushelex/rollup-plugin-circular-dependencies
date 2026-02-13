@@ -41,6 +41,7 @@ jobs:
         with:
           node-version: "lts/*"
           cache: pnpm
+          registry-url: "https://registry.npmjs.org"
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -59,24 +60,27 @@ jobs:
       - name: Determine release arguments
         id: args
         run: |
-          ARGS="--dir packages/plugin"
+          ARGS="--ci"
           BRANCH="${GITHUB_REF_NAME}"
 
           # Prerelease for rc branch
           if [ "$BRANCH" = "rc" ]; then
-            ARGS="$ARGS --prerelease rc"
+            ARGS="$ARGS --preRelease=rc"
           fi
 
           # Force bump type from workflow_dispatch
           BUMP="${{ github.event.inputs.bump }}"
           if [ -n "$BUMP" ]; then
-            ARGS="$ARGS --$BUMP"
+            ARGS="$ARGS $BUMP"
           fi
 
           echo "args=$ARGS" >> "$GITHUB_OUTPUT"
 
       - name: Release
-        run: npx changelogen ${{ steps.args.outputs.args }} --release --push
+        run: pnpm release-it ${{ steps.args.outputs.args }}
+        working-directory: packages/plugin
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish to npm
         if: github.ref_name == 'main'
@@ -87,8 +91,3 @@ jobs:
         if: github.ref_name == 'rc'
         run: npm publish --provenance --access public --tag rc
         working-directory: packages/plugin
-
-      - name: Create GitHub Release
-        run: npx changelogen gh release --dir packages/plugin
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

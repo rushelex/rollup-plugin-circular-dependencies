@@ -1,37 +1,9 @@
 # Changelog
 
 
-## v1.1.3-rc.7
+## v1.2.0-rc.6
 
-[compare changes](https://github.com/rushelex/rollup-plugin-circular-dependencies/compare/v1.1.3-rc.6...v1.1.3-rc.7)
-
-## v1.1.3-rc.6
-
-[compare changes](https://github.com/rushelex/rollup-plugin-circular-dependencies/compare/v1.1.3-rc.5...v1.1.3-rc.6)
-
-## v1.1.3-rc.5
-
-[compare changes](https://github.com/rushelex/rollup-plugin-circular-dependencies/compare/v1.1.3-rc.4...v1.1.3-rc.5)
-
-## v1.1.3-rc.4
-
-[compare changes](https://github.com/rushelex/rollup-plugin-circular-dependencies/compare/v1.1.3-rc.3...v1.1.3-rc.4)
-
-## v1.1.3-rc.3
-
-[compare changes](https://github.com/rushelex/rollup-plugin-circular-dependencies/compare/v1.1.3-rc.2...v1.1.3-rc.3)
-
-## v1.1.3-rc.2
-
-[compare changes](https://github.com/rushelex/rollup-plugin-circular-dependencies/compare/v1.1.3-rc.1...v1.1.3-rc.2)
-
-## v1.1.3-rc.1
-
-[compare changes](https://github.com/rushelex/rollup-plugin-circular-dependencies/compare/v1.1.3-rc.0...v1.1.3-rc.1)
-
-## v1.1.3-rc.0
-
-[compare changes](https://github.com/rushelex/rollup-plugin-circular-dependencies/compare/v1.1.2...v1.1.3-rc.0)
+[compare changes](https://github.com/rushelex/rollup-plugin-circular-dependencies/compare/v1.1.2...v1.2.0-rc.6)
 
 ### 🚀 Enhancements
 
@@ -43,7 +15,7 @@
 
 ### 🏡 Chore
 
-- Replace semantic-release with changelogen ([2a8effc](https://github.com/rushelex/rollup-plugin-circular-dependencies/commit/2a8effc))
+- Replace semantic-release with changelogen, then migrate to release-it ([2a8effc](https://github.com/rushelex/rollup-plugin-circular-dependencies/commit/2a8effc))
 - Move @rollup/pluginutils from devDependencies to dependencies ([d2cb02b](https://github.com/rushelex/rollup-plugin-circular-dependencies/commit/d2cb02b))
 
 ### 🤖 CI
@@ -169,4 +141,3 @@
 ## v1.0.0
 
 [compare changes](https://github.com/rushelex/rollup-plugin-circular-dependencies/compare/9707ddc6007a181c8b34669b265be356edd96e00...v1.0.0)
-
