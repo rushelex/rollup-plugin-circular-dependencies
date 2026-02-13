@@ -1,3 +1,18 @@
+# [2.0.0](https://github.com/rushelex/rollup-plugin-circular-dependencies/compare/v1.2.0...v2.0.0) (2026-02-13)
+
+
+* feat!: drop Rollup v2 support and remove compatibility layer ([63c18e3](https://github.com/rushelex/rollup-plugin-circular-dependencies/commit/63c18e3e2a7980263707b454f2062ba3347add5a))
+
+
+### Features
+
+* support watch mode ([5135d53](https://github.com/rushelex/rollup-plugin-circular-dependencies/commit/5135d53dd3f6a22ed2706a752b7709e2a97ca660))
+
+
+### BREAKING CHANGES
+
+* Rollup v2 is no longer supported. Minimum required version is now Rollup v3.
+
 # [1.2.0](https://github.com/rushelex/rollup-plugin-circular-dependencies/compare/v1.1.2...v1.2.0) (2026-02-13)
 
 
