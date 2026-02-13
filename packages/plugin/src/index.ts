@@ -40,10 +40,17 @@ type LegacyOnWarn = (
  * export default {
  *   plugins: [
  *     circularDependencies({
+ *       enabled: true,
  *       exclude: [/node_modules/],
  *       throwOnError: true,
+ *       debug: false,
  *       formatOut: DefaultFormatters.Pretty({ colors: false }),
  *       ignoreCycle: (paths) => paths.some(p => p.includes('generated')),
+ *       onStart: (pluginContext) => {},
+ *       onDetected: (modulePath, pluginContext) => {},
+ *       onEnd: ({ rawOutput, formattedOutput, metrics }, pluginContext) => {
+ *         console.log(`Found ${metrics.cyclesFound} cycle(s)`);
+ *       },
  *     })
  *   ]
  * }

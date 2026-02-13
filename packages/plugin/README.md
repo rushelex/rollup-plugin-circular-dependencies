@@ -58,20 +58,35 @@ export default {
   },
   plugins: [
     circularDependencies({
+      // Enable plugin (default: true)
+      enabled: true,
       // Include specific files based on a RegExp or a glob pattern
       include: [/\.[jt]sx?$/],
       // Exclude specific files based on a RegExp or a glob pattern
       exclude: [/[\\/]node_modules[\\/]/, /[\\/]\.git[\\/]/],
-      // Throw Vite error instead of warning
+      // Throw Rollup/Vite error instead of warning (default: true)
       throwOnError: true,
       // Path to the file with scan results. By default, the result is output to the console
       outputFilePath: './circular-deps-output',
+      // Enable debug logging for troubleshooting (default: false)
+      debug: false,
       // Formats the output module path
       formatOutModulePath: (filePath) => path.relative(process.cwd(), filePath),
       // Formats the given data into a specific output format
       formatOut: DefaultFormatters.Pretty({ colors: false }),
       // or
       // formatOut: (data) => data,
+      // Filter function to ignore specific circular dependency cycles.
+      // Return true to ignore the cycle, false to report it.
+      ignoreCycle: (paths) => paths.some(p => p.includes('generated')),
+      // Called before the cycle detection starts
+      onStart: (pluginContext) => {},
+      // Called for each cyclical module detected
+      onDetected: (modulePath, pluginContext) => {},
+      // Called after the cycle detection ends
+      onEnd: ({ rawOutput, formattedOutput, metrics }, pluginContext) => {
+        console.log(`Found ${metrics.cyclesFound} cycle(s) in ${metrics.detectionTimeMs.toFixed(1)}ms`);
+      },
     }),
   ],
 };

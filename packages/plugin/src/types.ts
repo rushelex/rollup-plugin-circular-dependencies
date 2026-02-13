@@ -49,7 +49,7 @@ export interface Options {
    */
   exclude?: FilterPattern;
   /**
-   * Throw Vite error instead of warning
+   * Throw Rollup/Vite error instead of warning
    *
    * @default true
    */
