@@ -1,6 +1,10 @@
 # Changelog
 
 
+## v1.1.3-rc.3
+
+[compare changes](https://github.com/rushelex/rollup-plugin-circular-dependencies/compare/v1.1.3-rc.2...v1.1.3-rc.3)
+
 ## v1.1.3-rc.2
 
 [compare changes](https://github.com/rushelex/rollup-plugin-circular-dependencies/compare/v1.1.3-rc.1...v1.1.3-rc.2)
