@@ -5,13 +5,7 @@ import type { Options } from './types';
 import { PLUGIN_NAME, ROLLUP_CIRCULAR_DEPENDENCY_CODE } from './constants';
 import { Context } from './context';
 import { ModuleNode } from './module';
-import { generateCycleNodesMap, generateModuleTree, pluginInfo, printCycleNodes } from './utils';
-
-/** Rollup v2 warning handler shape (before `onLog` was introduced in v3) */
-type LegacyOnWarn = (
-  warning: string | { code?: string; message: string },
-  defaultHandler: (warning: string | { code?: string; message: string }) => void,
-) => void;
+import { generateCycleNodesMap, generateModuleTree, printCycleNodes } from './utils';
 
 /**
  * Creates a Rollup plugin that detects circular dependencies in your project.
@@ -63,42 +57,24 @@ function circularDependencies(options: Options = {}): Plugin {
     name: PLUGIN_NAME,
 
     options(inputOptions) {
-      if ('onLog' in inputOptions) {
-        const savedOnLog = inputOptions.onLog;
+      const savedOnLog = inputOptions.onLog;
 
-        inputOptions.onLog = (level, log, defaultHandler) => {
-          if (log.code === ROLLUP_CIRCULAR_DEPENDENCY_CODE) {
-            return;
-          }
+      inputOptions.onLog = (level, log, defaultHandler) => {
+        if (log.code === ROLLUP_CIRCULAR_DEPENDENCY_CODE) {
+          return;
+        }
 
-          if (savedOnLog) {
-            savedOnLog(level, log, defaultHandler);
-          }
-          else {
-            defaultHandler(level, log);
-          }
-        };
-      }
-      else {
-        // Rollup v2 compat: `onwarn` instead of `onLog`
-        const opts = inputOptions as unknown as { onwarn?: LegacyOnWarn };
-        const savedOnWarn = opts.onwarn;
+        if (savedOnLog) {
+          savedOnLog(level, log, defaultHandler);
+        }
+        else {
+          defaultHandler(level, log);
+        }
+      };
+    },
 
-        opts.onwarn = (warning, defaultHandler) => {
-          const code = typeof warning === 'string' ? undefined : warning.code;
-
-          if (code === ROLLUP_CIRCULAR_DEPENDENCY_CODE) {
-            return;
-          }
-
-          if (savedOnWarn) {
-            savedOnWarn(warning, defaultHandler);
-          }
-          else {
-            defaultHandler(warning);
-          }
-        };
-      }
+    buildStart() {
+      context.reset();
     },
 
     moduleParsed(moduleInfo) {
@@ -117,8 +93,7 @@ function circularDependencies(options: Options = {}): Plugin {
 
       if (!context.entryModuleNode) {
         if (context.options.enabled) {
-          pluginInfo(
-            pluginContext,
+          pluginContext.info(
             'No files to check. Check the "include" or "exclude" pattern in the "circular-dependencies" plugin options.',
           );
         }
@@ -135,8 +110,6 @@ function circularDependencies(options: Options = {}): Plugin {
       const cycleNodes = generateCycleNodesMap(context, context.entryModuleNode, pluginContext);
 
       printCycleNodes(context, cycleNodes, pluginContext, detectionStartTime);
-
-      context.reset();
     },
   };
 }
