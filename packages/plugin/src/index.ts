@@ -64,7 +64,12 @@ function circularDependencies(options: Options = {}): Plugin {
             return;
           }
 
-          savedOnLog?.(level, log, defaultHandler);
+          if (savedOnLog) {
+            savedOnLog(level, log, defaultHandler);
+          }
+          else {
+            defaultHandler(level, log);
+          }
         };
       }
       else {

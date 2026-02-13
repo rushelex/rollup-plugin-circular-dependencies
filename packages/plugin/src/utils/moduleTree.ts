@@ -12,15 +12,9 @@ export function generateModuleTree(ctx: Context, rootModuleNode: ModuleNode): vo
   const moduleNodes = ctx.moduleNodes;
 
   function resolveChildren(node: ModuleNode): ModuleNode[] {
-    return node.importedIds.reduce<ModuleNode[]>((acc, moduleId) => {
-      const moduleNode = moduleNodes.get(moduleId);
-
-      if (moduleNode) {
-        acc.push(moduleNode);
-      }
-
-      return acc;
-    }, []);
+    return node.importedIds
+      .map((id) => moduleNodes.get(id))
+      .filter((n) => n !== undefined);
   }
 
   function buildTree(node: ModuleNode): void {
@@ -86,7 +80,7 @@ function normalizeCycleId(nodes: ModuleNode[]): string {
 
 /** Returns a sorted copy of cycle nodes for consistent output */
 function normalizeCycleNodes(nodes: ModuleNode[]): ModuleNode[] {
-  return [...nodes].sort((a, b) => (a.id < b.id ? -1 : 1));
+  return [...nodes].sort((a, b) => a.id.localeCompare(b.id));
 }
 
 /**
