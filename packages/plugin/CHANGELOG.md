@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.2.0-rc.9](https://github.com/rushelex/rollup-plugin-circular-dependencies/compare/v1.2.0-rc.8...v1.2.0-rc.9) (2026-02-13)
+
+### 🩹 Fixes
+
+* **release:** add --no-git-checks flag to npm publish args ([d3f1ece](https://github.com/rushelex/rollup-plugin-circular-dependencies/commit/d3f1ecee2361276488f2f604718429403e3b752a))
+
 ## [1.2.0-rc.8](https://github.com/rushelex/rollup-plugin-circular-dependencies/compare/v1.2.0-rc.7...v1.2.0-rc.8) (2026-02-13)
 
 ### 📖 Documentation
