@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.2.0-rc.7](https://github.com/rushelex/rollup-plugin-circular-dependencies/compare/v1.2.0-rc.6...v1.2.0-rc.7) (2026-02-13)
+
+### 🩹 Fixes
+
+* **formatters:** support uppercase boolean values of color envs ([28d4c4f](https://github.com/rushelex/rollup-plugin-circular-dependencies/commit/28d4c4facf72038f2662f04c2869867c494e2d8c))
+* **moduleTree:** use localeCompare for cycle node sorting ([e752fb0](https://github.com/rushelex/rollup-plugin-circular-dependencies/commit/e752fb0a60756edfc1e9bac0435e1cb4c0b2d838))
+* **plugin:** handle undefined savedOnLog with explicit fallback ([f071442](https://github.com/rushelex/rollup-plugin-circular-dependencies/commit/f071442e3a5cf56bdf5d7def2a4ebabf4b8a8748))
+
+### 💅 Refactors
+
+* **context:** make moduleNodes readonly in Context class ([3235998](https://github.com/rushelex/rollup-plugin-circular-dependencies/commit/3235998a534e53f995c06601461e2a829144687a))
+* **context:** use Map.clear() instead of new Map() ([758446d](https://github.com/rushelex/rollup-plugin-circular-dependencies/commit/758446d36e6ac06125db18198bdbf847000f2f8a))
+* **formatOptions:** extract formatter selection from closure ([95add51](https://github.com/rushelex/rollup-plugin-circular-dependencies/commit/95add515d48f4dff983e1298e54f88cfccd6f267))
+* **moduleTree:** simplify resolveChildren with map/filter ([cda6e0d](https://github.com/rushelex/rollup-plugin-circular-dependencies/commit/cda6e0dc15e41394a38b6875ac10e25b53f45f6c))
+* **print:** optimize validateCycleData parameter order and cycle counting ([4aeee50](https://github.com/rushelex/rollup-plugin-circular-dependencies/commit/4aeee501831387c703e7af7edba3602727bb2865))
+
+### 🏡 Chore
+
+* **ci:** disable strictSemVer in release-it config ([444acb6](https://github.com/rushelex/rollup-plugin-circular-dependencies/commit/444acb602770644a0378edfc2d896a4c30f74c7d))
 
 ## v1.2.0-rc.6
 
