@@ -1,7 +1,7 @@
 {
   "name": "rollup-plugin-circular-dependencies",
   "type": "module",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Detect circular dependencies in Rollup projects",
   "author": "Aleksey Shelementev <rushelex@gmail.com>",
   "license": "ISC",

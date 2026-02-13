@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/rushelex/rollup-plugin-circular-dependencies/compare/v2.0.0...v2.0.1) (2026-02-13)
+
+
+### Bug Fixes
+
+* add comprehensive documentation and ISC license ([9d569b9](https://github.com/rushelex/rollup-plugin-circular-dependencies/commit/9d569b95436b661b39014def8270b53bbdb33f16))
+
 # [2.0.0](https://github.com/rushelex/rollup-plugin-circular-dependencies/compare/v1.2.0...v2.0.0) (2026-02-13)
 
 
