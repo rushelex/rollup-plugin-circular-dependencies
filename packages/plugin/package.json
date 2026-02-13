@@ -4,7 +4,7 @@
   "version": "2.0.0",
   "description": "Detect circular dependencies in Rollup projects",
   "author": "Aleksey Shelementev <rushelex@gmail.com>",
-  "license": "MIT",
+  "license": "ISC",
   "homepage": "https://github.com/rushelex/rollup-plugin-circular-dependencies#readme",
   "repository": {
     "type": "git",
