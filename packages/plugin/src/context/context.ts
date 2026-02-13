@@ -14,7 +14,7 @@ import { formatOptions } from './formatOptions';
 export class Context {
   public readonly options: Required<Options>;
   public readonly shouldProcessModule: (moduleId: string) => boolean;
-  public moduleNodes: Map<string, ModuleNode>;
+  public readonly moduleNodes: Map<string, ModuleNode>;
   private _entryModuleNode: ModuleNode | null = null;
 
   constructor(options: Options) {
