@@ -68,6 +68,11 @@ jobs:
             ARGS="$ARGS --preRelease=rc"
           fi
 
+          # Exclude prerelease tags on main to enable graduation (rc → stable)
+          if [ "$BRANCH" = "main" ]; then
+            ARGS="$ARGS --git.tagExclude='*[-]*'"
+          fi
+
           # Force bump type from workflow_dispatch
           BUMP="${{ github.event.inputs.bump }}"
           if [ -n "$BUMP" ]; then
