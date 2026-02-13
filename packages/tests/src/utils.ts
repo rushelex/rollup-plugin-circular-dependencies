@@ -99,7 +99,7 @@ export async function buildWithRollup(
         await bundle.write(outputOptions);
       }
 
-      if (bundle.close !== undefined && typeof bundle.close === 'function') {
+      if ('close' in bundle && bundle.close !== undefined && typeof bundle.close === 'function') {
         await bundle.close();
       }
     }

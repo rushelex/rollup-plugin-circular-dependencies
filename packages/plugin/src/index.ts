@@ -5,7 +5,7 @@ import type { Options } from './types';
 import { PLUGIN_NAME, ROLLUP_CIRCULAR_DEPENDENCY_CODE } from './constants';
 import { Context } from './context';
 import { ModuleNode } from './module';
-import { generateCycleNodesMap, generateModuleTree, printCycleNodes } from './utils';
+import { generateCycleNodesMap, generateModuleTree, pluginInfo, printCycleNodes } from './utils';
 
 /** Rollup v2 warning handler shape (before `onLog` was introduced in v3) */
 type LegacyOnWarn = (
@@ -105,7 +105,8 @@ function circularDependencies(options: Options = {}): Plugin {
 
       if (!context.entryModuleNode) {
         if (context.options.enabled) {
-          pluginContext.info(
+          pluginInfo(
+            pluginContext,
             'No files to check. Check the "include" or "exclude" pattern in the "circular-dependencies" plugin options.',
           );
         }

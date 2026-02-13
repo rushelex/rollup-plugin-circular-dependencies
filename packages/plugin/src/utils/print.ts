@@ -4,6 +4,7 @@ import type { Context } from '../context';
 import type { ModuleNode } from '../module';
 import type { CircularDependenciesData, FormattedData, Metrics } from '../types';
 
+import { pluginInfo } from './compat';
 import { createPrinters } from './printers';
 
 /**
@@ -119,14 +120,15 @@ function logDebugInfo(
   metrics: Metrics,
   data: CircularDependenciesData,
 ): void {
-  pluginContext.info(
+  pluginInfo(
+    pluginContext,
     `[circular-dependencies] Checked ${metrics.modulesChecked} modules in ${metrics.detectionTimeMs.toFixed(1)}ms. `
     + `Found ${metrics.cyclesFound} cycle(s), largest cycle size: ${metrics.largestCycleSize}.`,
   );
 
   for (const [nodeId, cycles] of Object.entries(data)) {
     for (const cycle of cycles) {
-      pluginContext.info(`[circular-dependencies] Cycle: ${nodeId} → ${cycle.join(' → ')}`);
+      pluginInfo(pluginContext, `[circular-dependencies] Cycle: ${nodeId} → ${cycle.join(' → ')}`);
     }
   }
 }
