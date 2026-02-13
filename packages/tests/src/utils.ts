@@ -7,9 +7,7 @@ import { resolve } from 'node:path';
 import process from 'node:process';
 import { format } from 'node:util';
 
-import { rollup, VERSION } from 'rollup';
-
-const rollupMajor = Number.parseInt(VERSION.split('.')[0], 10);
+import { rollup } from 'rollup';
 
 const testRoot = resolve(import.meta.dirname, '..');
 
@@ -71,24 +69,13 @@ export async function buildWithRollup(
 
   await consoleStorage.run(store, async () => {
     try {
-      const warningInterceptor = rollupMajor >= 3
-        ? {
-            onLog(level: string, log: { message: string }) {
-              if (level === 'warn') {
-                warnings.push(log.message);
-              }
-            },
-          }
-        : {
-            onwarn(warning: string | { message: string }) {
-              const message = typeof warning === 'string' ? warning : warning.message;
-              warnings.push(message);
-            },
-          };
-
       const rollupOptions = {
         ...config,
-        ...warningInterceptor,
+        onLog(level: string, log: { message: string }) {
+          if (level === 'warn') {
+            warnings.push(log.message);
+          }
+        },
       } as RollupOptions;
 
       const bundle = await rollup(rollupOptions);
@@ -99,9 +86,7 @@ export async function buildWithRollup(
         await bundle.write(outputOptions);
       }
 
-      if ('close' in bundle && bundle.close !== undefined && typeof bundle.close === 'function') {
-        await bundle.close();
-      }
+      await bundle.close();
     }
     catch (error) {
       hasError = true;
