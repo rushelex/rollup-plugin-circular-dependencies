@@ -1,3 +1,19 @@
+# [1.2.0](https://github.com/rushelex/rollup-plugin-circular-dependencies/compare/v1.1.2...v1.2.0) (2026-02-13)
+
+
+### Bug Fixes
+
+* add Rollup v2 compatibility for pluginContext.info() ([cc95c8d](https://github.com/rushelex/rollup-plugin-circular-dependencies/commit/cc95c8def6c6601b656d98cb62e1a56cc988d87a))
+* **formatters:** support uppercase boolean values of color envs ([28d4c4f](https://github.com/rushelex/rollup-plugin-circular-dependencies/commit/28d4c4facf72038f2662f04c2869867c494e2d8c))
+* **moduleTree:** use localeCompare for cycle node sorting ([e752fb0](https://github.com/rushelex/rollup-plugin-circular-dependencies/commit/e752fb0a60756edfc1e9bac0435e1cb4c0b2d838))
+* **plugin:** handle undefined savedOnLog with explicit fallback ([f071442](https://github.com/rushelex/rollup-plugin-circular-dependencies/commit/f071442e3a5cf56bdf5d7def2a4ebabf4b8a8748))
+* **release:** add --no-git-checks flag to npm publish args ([d3f1ece](https://github.com/rushelex/rollup-plugin-circular-dependencies/commit/d3f1ecee2361276488f2f604718429403e3b752a))
+
+
+### Features
+
+* remove ESM dependencies, support CJS and ESM native, bump Node.js support to >=20.12.0 ([1a8c4e0](https://github.com/rushelex/rollup-plugin-circular-dependencies/commit/1a8c4e0fadbeb33d63ee28001790892e1601c929))
+
 # Changelog
 
 ## [1.2.0-rc.9](https://github.com/rushelex/rollup-plugin-circular-dependencies/compare/v1.2.0-rc.8...v1.2.0-rc.9) (2026-02-13)
