@@ -13,6 +13,11 @@
   "bugs": {
     "url": "https://github.com/rushelex/rollup-plugin-circular-dependencies/issues"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public",
+    "provenance": true
+  },
   "keywords": [
     "rollup-plugin",
     "rollup plugin",

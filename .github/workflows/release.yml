@@ -5,22 +5,12 @@ on:
     branches:
       - main
       - rc
-  workflow_dispatch:
-    inputs:
-      bump:
-        description: Force bump type (leave empty for auto)
-        type: choice
-        required: false
-        default: ""
-        options:
-          - ""
-          - major
-          - minor
-          - patch
 
 permissions:
   contents: write
   id-token: write
+  issues: write
+  pull-requests: write
 
 jobs:
   release:
@@ -31,7 +21,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          ssh-key: ${{ secrets.DEPLOY_KEY }}
+          persist-credentials: false
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
@@ -52,37 +42,8 @@ jobs:
       - name: Run tests
         run: pnpm test
 
-      - name: Configure git
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-
-      - name: Determine release arguments
-        id: args
-        run: |
-          ARGS="--ci"
-          BRANCH="${GITHUB_REF_NAME}"
-
-          # Prerelease for rc branch
-          if [ "$BRANCH" = "rc" ]; then
-            ARGS="$ARGS --preRelease=rc"
-          fi
-
-          # Exclude prerelease tags on main to enable graduation (rc → stable)
-          if [ "$BRANCH" = "main" ]; then
-            ARGS="$ARGS --git.tagExclude='*[-]*'"
-          fi
-
-          # Force bump type from workflow_dispatch
-          BUMP="${{ github.event.inputs.bump }}"
-          if [ -n "$BUMP" ]; then
-            ARGS="$ARGS $BUMP"
-          fi
-
-          echo "args=$ARGS" >> "$GITHUB_OUTPUT"
-
       - name: Release
-        run: pnpm release-it ${{ steps.args.outputs.args }}
-        working-directory: packages/plugin
+        run: pnpm semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_CONFIG_PROVENANCE: true
