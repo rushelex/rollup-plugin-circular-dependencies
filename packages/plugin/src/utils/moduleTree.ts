@@ -80,7 +80,7 @@ function normalizeCycleId(nodes: ModuleNode[]): string {
 
 /** Returns a sorted copy of cycle nodes for consistent output */
 function normalizeCycleNodes(nodes: ModuleNode[]): ModuleNode[] {
-  return [...nodes].sort((a, b) => (a.id < b.id ? -1 : 1));
+  return [...nodes].sort((a, b) => a.id.localeCompare(b.id));
 }
 
 /**
