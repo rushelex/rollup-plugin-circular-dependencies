@@ -1,0 +1,222 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Plugin > should call lifecycle callbacks 1`] = `
+"[circularDependencies] onStart
+[circularDependencies] onDetected | modulePath :>> src/fixtures/data/async_module/circleDep/data/data3.js
+[circularDependencies] onDetected | modulePath :>> src/fixtures/data/async_module/circleDep/data/data2.js
+[circularDependencies] onDetected | modulePath :>> src/fixtures/data/async_module/circleDep/data/data1.js
+[circularDependencies] onDetected | modulePath :>> src/fixtures/data/async_module/depSelf/depSelf.js
+[circularDependencies] onDetected | modulePath :>> src/fixtures/data/async_module/indirectCircleDep/data/data3.js
+[circularDependencies] onDetected | modulePath :>> src/fixtures/data/async_module/indirectCircleDep/data/data2.js
+[circularDependencies] onDetected | modulePath :>> src/fixtures/data/async_module/indirectCircleDep/data/data1.js
+[circularDependencies] onDetected | modulePath :>> src/fixtures/data/sync_module/circleDep/circleDep3.js
+[circularDependencies] onDetected | modulePath :>> src/fixtures/data/sync_module/circleDep/circleDep2.js
+[circularDependencies] onDetected | modulePath :>> src/fixtures/data/sync_module/circleDep/circleDep1.js
+[circularDependencies] onDetected | modulePath :>> src/fixtures/data/sync_module/depSelf/depSelf1.js
+[circularDependencies] onDetected | modulePath :>> src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep3.js
+[circularDependencies] onDetected | modulePath :>> src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep2.js
+[circularDependencies] onDetected | modulePath :>> src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep1.js
+[circularDependencies] onEnd | rawOutput :>> {
+  'src/fixtures/data/async_module/circleDep/data/data1.js': [
+    [
+      'src/fixtures/data/async_module/circleDep/data/data1.js',
+      'src/fixtures/data/async_module/circleDep/data/data2.js',
+      'src/fixtures/data/async_module/circleDep/data/data3.js'
+    ]
+  ],
+  'src/fixtures/data/async_module/depSelf/depSelf.js': [ [ 'src/fixtures/data/async_module/depSelf/depSelf.js' ] ],
+  'src/fixtures/data/async_module/indirectCircleDep/data/data1.js': [
+    [
+      'src/fixtures/data/async_module/indirectCircleDep/data/data1.js',
+      'src/fixtures/data/async_module/indirectCircleDep/data/data2.js',
+      'src/fixtures/data/async_module/indirectCircleDep/data/data3.js'
+    ]
+  ],
+  'src/fixtures/data/sync_module/circleDep/circleDep1.js': [
+    [
+      'src/fixtures/data/sync_module/circleDep/circleDep1.js',
+      'src/fixtures/data/sync_module/circleDep/circleDep2.js',
+      'src/fixtures/data/sync_module/circleDep/circleDep3.js'
+    ]
+  ],
+  'src/fixtures/data/sync_module/depSelf/depSelf1.js': [ [ 'src/fixtures/data/sync_module/depSelf/depSelf1.js' ] ],
+  'src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep1.js': [
+    [
+      'src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep1.js',
+      'src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep2.js',
+      'src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep3.js'
+    ]
+  ]
+}
+[circularDependencies] onEnd | formattedOutput :>> src/fixtures/data/async_module/circleDep/data/data1.js
+    src/fixtures/data/async_module/circleDep/data/data1.js -> src/fixtures/data/async_module/circleDep/data/data2.js -> src/fixtures/data/async_module/circleDep/data/data3.js
+
+src/fixtures/data/async_module/depSelf/depSelf.js
+    src/fixtures/data/async_module/depSelf/depSelf.js
+
+src/fixtures/data/async_module/indirectCircleDep/data/data1.js
+    src/fixtures/data/async_module/indirectCircleDep/data/data1.js -> src/fixtures/data/async_module/indirectCircleDep/data/data2.js -> src/fixtures/data/async_module/indirectCircleDep/data/data3.js
+
+src/fixtures/data/sync_module/circleDep/circleDep1.js
+    src/fixtures/data/sync_module/circleDep/circleDep1.js -> src/fixtures/data/sync_module/circleDep/circleDep2.js -> src/fixtures/data/sync_module/circleDep/circleDep3.js
+
+src/fixtures/data/sync_module/depSelf/depSelf1.js
+    src/fixtures/data/sync_module/depSelf/depSelf1.js
+
+src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep1.js
+    src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep1.js -> src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep2.js -> src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep3.js
+
+
+src/fixtures/data/async_module/circleDep/data/data1.js
+    src/fixtures/data/async_module/circleDep/data/data1.js -> src/fixtures/data/async_module/circleDep/data/data2.js -> src/fixtures/data/async_module/circleDep/data/data3.js
+
+src/fixtures/data/async_module/depSelf/depSelf.js
+    src/fixtures/data/async_module/depSelf/depSelf.js
+
+src/fixtures/data/async_module/indirectCircleDep/data/data1.js
+    src/fixtures/data/async_module/indirectCircleDep/data/data1.js -> src/fixtures/data/async_module/indirectCircleDep/data/data2.js -> src/fixtures/data/async_module/indirectCircleDep/data/data3.js
+
+src/fixtures/data/sync_module/circleDep/circleDep1.js
+    src/fixtures/data/sync_module/circleDep/circleDep1.js -> src/fixtures/data/sync_module/circleDep/circleDep2.js -> src/fixtures/data/sync_module/circleDep/circleDep3.js
+
+src/fixtures/data/sync_module/depSelf/depSelf1.js
+    src/fixtures/data/sync_module/depSelf/depSelf1.js
+
+src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep1.js
+    src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep1.js -> src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep2.js -> src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep3.js
+"
+`;
+
+exports[`Plugin > should print basic output in console 1`] = `
+"
+
+src/fixtures/data/async_module/circleDep/data/data1.js
+    src/fixtures/data/async_module/circleDep/data/data1.js -> src/fixtures/data/async_module/circleDep/data/data2.js -> src/fixtures/data/async_module/circleDep/data/data3.js
+
+src/fixtures/data/async_module/depSelf/depSelf.js
+    src/fixtures/data/async_module/depSelf/depSelf.js
+
+src/fixtures/data/async_module/indirectCircleDep/data/data1.js
+    src/fixtures/data/async_module/indirectCircleDep/data/data1.js -> src/fixtures/data/async_module/indirectCircleDep/data/data2.js -> src/fixtures/data/async_module/indirectCircleDep/data/data3.js
+
+src/fixtures/data/sync_module/circleDep/circleDep1.js
+    src/fixtures/data/sync_module/circleDep/circleDep1.js -> src/fixtures/data/sync_module/circleDep/circleDep2.js -> src/fixtures/data/sync_module/circleDep/circleDep3.js
+
+src/fixtures/data/sync_module/depSelf/depSelf1.js
+    src/fixtures/data/sync_module/depSelf/depSelf1.js
+
+src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep1.js
+    src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep1.js -> src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep2.js -> src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep3.js
+"
+`;
+
+exports[`Plugin > should print basic output in file 1`] = `
+"{
+  "src/fixtures/data/async_module/circleDep/data/data1.js": [
+    [
+      "src/fixtures/data/async_module/circleDep/data/data1.js",
+      "src/fixtures/data/async_module/circleDep/data/data2.js",
+      "src/fixtures/data/async_module/circleDep/data/data3.js"
+    ]
+  ],
+  "src/fixtures/data/async_module/depSelf/depSelf.js": [
+    [
+      "src/fixtures/data/async_module/depSelf/depSelf.js"
+    ]
+  ],
+  "src/fixtures/data/async_module/indirectCircleDep/data/data1.js": [
+    [
+      "src/fixtures/data/async_module/indirectCircleDep/data/data1.js",
+      "src/fixtures/data/async_module/indirectCircleDep/data/data2.js",
+      "src/fixtures/data/async_module/indirectCircleDep/data/data3.js"
+    ]
+  ],
+  "src/fixtures/data/sync_module/circleDep/circleDep1.js": [
+    [
+      "src/fixtures/data/sync_module/circleDep/circleDep1.js",
+      "src/fixtures/data/sync_module/circleDep/circleDep2.js",
+      "src/fixtures/data/sync_module/circleDep/circleDep3.js"
+    ]
+  ],
+  "src/fixtures/data/sync_module/depSelf/depSelf1.js": [
+    [
+      "src/fixtures/data/sync_module/depSelf/depSelf1.js"
+    ]
+  ],
+  "src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep1.js": [
+    [
+      "src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep1.js",
+      "src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep2.js",
+      "src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep3.js"
+    ]
+  ]
+}"
+`;
+
+exports[`Plugin > should print json output in console 1`] = `
+"
+
+{
+  "src/fixtures/data/async_module/circleDep/data/data1.js": [
+    [
+      "src/fixtures/data/async_module/circleDep/data/data1.js",
+      "src/fixtures/data/async_module/circleDep/data/data2.js",
+      "src/fixtures/data/async_module/circleDep/data/data3.js"
+    ]
+  ],
+  "src/fixtures/data/async_module/depSelf/depSelf.js": [
+    [
+      "src/fixtures/data/async_module/depSelf/depSelf.js"
+    ]
+  ],
+  "src/fixtures/data/async_module/indirectCircleDep/data/data1.js": [
+    [
+      "src/fixtures/data/async_module/indirectCircleDep/data/data1.js",
+      "src/fixtures/data/async_module/indirectCircleDep/data/data2.js",
+      "src/fixtures/data/async_module/indirectCircleDep/data/data3.js"
+    ]
+  ],
+  "src/fixtures/data/sync_module/circleDep/circleDep1.js": [
+    [
+      "src/fixtures/data/sync_module/circleDep/circleDep1.js",
+      "src/fixtures/data/sync_module/circleDep/circleDep2.js",
+      "src/fixtures/data/sync_module/circleDep/circleDep3.js"
+    ]
+  ],
+  "src/fixtures/data/sync_module/depSelf/depSelf1.js": [
+    [
+      "src/fixtures/data/sync_module/depSelf/depSelf1.js"
+    ]
+  ],
+  "src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep1.js": [
+    [
+      "src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep1.js",
+      "src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep2.js",
+      "src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep3.js"
+    ]
+  ]
+}
+"
+`;
+
+exports[`Plugin > should print pretty output in file 1`] = `
+"src/fixtures/data/async_module/circleDep/data/data1.js
+    src/fixtures/data/async_module/circleDep/data/data1.js -> src/fixtures/data/async_module/circleDep/data/data2.js -> src/fixtures/data/async_module/circleDep/data/data3.js
+
+src/fixtures/data/async_module/depSelf/depSelf.js
+    src/fixtures/data/async_module/depSelf/depSelf.js
+
+src/fixtures/data/async_module/indirectCircleDep/data/data1.js
+    src/fixtures/data/async_module/indirectCircleDep/data/data1.js -> src/fixtures/data/async_module/indirectCircleDep/data/data2.js -> src/fixtures/data/async_module/indirectCircleDep/data/data3.js
+
+src/fixtures/data/sync_module/circleDep/circleDep1.js
+    src/fixtures/data/sync_module/circleDep/circleDep1.js -> src/fixtures/data/sync_module/circleDep/circleDep2.js -> src/fixtures/data/sync_module/circleDep/circleDep3.js
+
+src/fixtures/data/sync_module/depSelf/depSelf1.js
+    src/fixtures/data/sync_module/depSelf/depSelf1.js
+
+src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep1.js
+    src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep1.js -> src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep2.js -> src/fixtures/data/sync_module/indirectCircleDep/indirectCircleDep3.js"
+`;
+
+exports[`Plugin > should skip detecting 1`] = `""`;
