@@ -43,6 +43,6 @@ export class Context {
    */
   public reset(): void {
     this._entryModuleNode = null;
-    this.moduleNodes = new Map<string, ModuleNode>();
+    this.moduleNodes.clear();
   }
 }
