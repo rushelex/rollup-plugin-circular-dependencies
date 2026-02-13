@@ -39,10 +39,13 @@ function JSONFormatter(): Formatter {
 function isColorDisabled(): boolean {
   return process.env.NO_COLOR === '1'
     || process.env.NO_COLOR === 'true'
+    || process.env.NO_COLOR === 'TRUE'
     || process.env.NODE_DISABLE_COLORS === '1'
     || process.env.NODE_DISABLE_COLORS === 'true'
+    || process.env.NODE_DISABLE_COLORS === 'TRUE'
     || process.env.FORCE_COLOR === '0'
-    || process.env.FORCE_COLOR === 'false';
+    || process.env.FORCE_COLOR === 'false'
+    || process.env.FORCE_COLOR === 'FALSE';
 }
 
 /**
