@@ -1,0 +1,9 @@
+diff --git a/dist/is-array.d.ts b/dist/is-array.d.ts
+index 199bc66ed2048bc6d6fdaceb7b45d8145b01ff31..296777a6788bb544621b7d1f819c2f507504dff7 100644
+--- a/dist/is-array.d.ts
++++ b/dist/is-array.d.ts
+@@ -1,3 +1,4 @@
+ interface ArrayConstructor {
++  isArray(arg: any): arg is readonly unknown[];
+   isArray(arg: any): arg is unknown[];
+ }
