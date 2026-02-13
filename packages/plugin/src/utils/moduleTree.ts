@@ -12,15 +12,9 @@ export function generateModuleTree(ctx: Context, rootModuleNode: ModuleNode): vo
   const moduleNodes = ctx.moduleNodes;
 
   function resolveChildren(node: ModuleNode): ModuleNode[] {
-    return node.importedIds.reduce<ModuleNode[]>((acc, moduleId) => {
-      const moduleNode = moduleNodes.get(moduleId);
-
-      if (moduleNode) {
-        acc.push(moduleNode);
-      }
-
-      return acc;
-    }, []);
+    return node.importedIds
+      .map((id) => moduleNodes.get(id))
+      .filter((n) => n !== undefined);
   }
 
   function buildTree(node: ModuleNode): void {
