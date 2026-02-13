@@ -17,7 +17,7 @@ module.exports = {
     publish: true,
     skipChecks: true,
     publishPackageManager: 'pnpm',
-    publishArgs: ['--provenance', '--access', 'public'],
+    publishArgs: ['--provenance', '--access', 'public', '--no-git-checks'],
   },
   hooks: {
     'after:bump': 'cd ../.. && pnpm install --lockfile-only && git add pnpm-lock.yaml',
