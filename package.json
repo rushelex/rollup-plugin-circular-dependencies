@@ -19,7 +19,7 @@
     "test:coverage": "pnpm -r run test:coverage"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^7.4.3",
+    "@antfu/eslint-config": "^7.6.1",
     "@commitlint/cli": "^20.4.2",
     "@commitlint/config-conventional": "^20.4.2",
     "@semantic-release/changelog": "^6.0.3",
