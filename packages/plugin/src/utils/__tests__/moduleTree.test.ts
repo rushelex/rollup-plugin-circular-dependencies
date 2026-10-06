@@ -318,7 +318,7 @@ function createGraphWithTree(
   edges: Record<string, string[]>,
   optionsOverrides: Record<string, unknown> = {},
 ) {
-  const ctx = new Context(optionsOverrides as never);
+  const ctx = new Context(optionsOverrides);
   const nodes = new Map<string, ModuleNode>();
 
   for (const [id, imports] of Object.entries(edges)) {
@@ -389,7 +389,7 @@ function buildGraphFromDef(
     }
   }
 
-  const ctx = new Context(optionsOverrides as never);
+  const ctx = new Context(optionsOverrides);
   const nodes = new Map<string, ModuleNode>();
 
   for (const [id, imports] of Object.entries(edgeMap)) {

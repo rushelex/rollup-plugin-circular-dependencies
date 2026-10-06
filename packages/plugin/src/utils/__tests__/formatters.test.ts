@@ -95,7 +95,7 @@ describe(DefaultFormatters.Pretty, () => {
   });
 
   it('should throw for data with empty inner arrays', () => {
-    expect(() => DefaultFormatters.Pretty({ colors: false })({ key: [[]] } as never))
+    expect(() => DefaultFormatters.Pretty({ colors: false })({ key: [[]] }))
       .toThrow('Pretty formatter can only be used with original output');
   });
 

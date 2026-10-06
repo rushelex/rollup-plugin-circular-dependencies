@@ -19,20 +19,20 @@
     "test:coverage": "pnpm -r run test:coverage"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^7.6.1",
-    "@commitlint/cli": "^20.4.3",
-    "@commitlint/config-conventional": "^20.4.2",
+    "@antfu/eslint-config": "^7.7.3",
+    "@commitlint/cli": "^20.5.3",
+    "@commitlint/config-conventional": "^20.5.3",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
-    "@types/node": "^25.3.3",
-    "conventional-changelog-angular": "^8.2.0",
-    "eslint": "^9.39.2",
+    "@types/node": "^25.9.9",
+    "conventional-changelog-angular": "^8.3.1",
+    "eslint": "^9.39.5",
     "eslint-plugin-format": "^2.0.1",
-    "jsonc-eslint-parser": "^3.1.0",
-    "lefthook": "^2.1.2",
-    "semantic-release": "^25.0.3",
-    "taze": "^19.10.0",
+    "jsonc-eslint-parser": "^3.3.0",
+    "lefthook": "^2.1.17",
+    "semantic-release": "^25.0.9",
+    "taze": "^19.17.2",
     "typescript": "^5.9.3",
-    "vitest": "^4.0.18"
+    "vitest": "^4.1.11"
   }
 }
