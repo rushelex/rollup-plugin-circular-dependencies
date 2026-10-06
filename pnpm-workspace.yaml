@@ -7,9 +7,19 @@ packages:
   - "packages/*"
   - "examples/*"
 
+overrides:
+  # https://github.com/typescript-eslint/typescript-eslint/issues/12980
+  "@typescript-eslint/eslint-plugin@8.71.1": 8.71.0
+  tinypool@<2.1.2: ^2.1.2
+
 patchedDependencies:
   "@total-typescript/ts-reset": patches/@total-typescript__ts-reset.patch
 
 onlyBuiltDependencies:
   - esbuild
   - lefthook
+
+auditConfig:
+  ignoreGhsas:
+    # braces@3.0.3 has no patched release; reached only via semantic-release on trusted repo config
+    - GHSA-vfj7-8cjw-p6xm

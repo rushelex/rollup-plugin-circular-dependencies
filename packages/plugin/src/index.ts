@@ -1,4 +1,4 @@
-import type { Plugin, PluginContext } from 'rollup';
+import type { Plugin } from 'rollup';
 
 import type { Options } from './types';
 
@@ -89,11 +89,9 @@ function circularDependencies(options: Options = {}): Plugin {
     },
 
     generateBundle() {
-      const pluginContext = this as unknown as PluginContext;
-
       if (!context.entryModuleNode) {
         if (context.options.enabled) {
-          pluginContext.info(
+          this.info(
             'No files to check. Check the "include" or "exclude" pattern in the "circular-dependencies" plugin options.',
           );
         }
@@ -103,13 +101,13 @@ function circularDependencies(options: Options = {}): Plugin {
 
       const detectionStartTime = performance.now();
 
-      context.options.onStart(pluginContext);
+      context.options.onStart(this);
 
       generateModuleTree(context, context.entryModuleNode);
 
-      const cycleNodes = generateCycleNodesMap(context, context.entryModuleNode, pluginContext);
+      const cycleNodes = generateCycleNodesMap(context, context.entryModuleNode, this);
 
-      printCycleNodes(context, cycleNodes, pluginContext, detectionStartTime);
+      printCycleNodes(context, cycleNodes, this, detectionStartTime);
     },
   };
 }

@@ -110,7 +110,7 @@ describe(formatOptions, () => {
     });
 
     it('should return DEFAULT_EXCLUDE for falsy exclude value', () => {
-      const result = formatOptions({ exclude: null as never });
+      const result = formatOptions({ exclude: null });
 
       expect(result.exclude).toEqual(DEFAULT_EXCLUDE);
     });
